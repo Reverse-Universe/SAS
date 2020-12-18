@@ -1,1 +1,1 @@
-## STORING pictures in markdown files.
+#### STORING pictures in markdown files.
