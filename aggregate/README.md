@@ -88,9 +88,9 @@ run;
 
 <table>
 <tr><td></td><td></td><th>Number of Visits</th><th>Number of Patients</th><th>Total Expense</th></tr>
-<tr><th rowspan="3">hospital Level</th><td>Third-level</td></tr><td></td><td></td><td></td>
-<tr><td>Second-level</td></tr><td></td><td></td><td></td>
-<tr><td>Third-level</td></tr><td></td><td></td><td></td>
-<tr><th rowspan="2">Community Hospital</th><td>Yes</td></tr><td></td><td></td><td></td>
-<tr><td>No</td></tr><td></td><td></td><td></td>
+<tr><th rowspan="3">hospital Level</th><td>Third-level</td><td></td><td></td><td></td></tr>
+<tr><td>Second-level</td><td></td><td></td><td></td></tr>
+<tr><td>First-level</td><td></td><td></td><td></td></tr>
+<tr><th rowspan="2">Community Hospital</th><td>Yes</td><td></td><td></td><td></td></tr>
+<tr><td>No</td><td></td><td></td><td></td></tr>
 </table>
