@@ -63,7 +63,7 @@ When this happens, a better job would be recognizing that this patient had recei
 ### Money-related variables
 The key to the problem is that both bills(registration and medical treatment) involve expense. The patient could be viewed as having gone to the hospital as long as he had paid for the bill, no matter what kind of that.
 
-Firstly, sum up the total_cost of each patient in each group(`hos_level`). Secondly, taking the bills of zero-expense (`total_cost` = 0) into consideration, it would be better to drop the rows with `total_cost` equals to 0. And add a new column called `number_of_patients` = 1. Finally, aggregate this column by `hos_level`.
+Firstly, sum up the total_cost of each patient in each group(`hos_level`). Secondly, while taking the bills of zero-expense (`total_cost` = 0) into consideration, it would be better to drop this kind of bills. Thirdly, add a new column called `number_of_patients` = 1. Finally, aggregate this column by `hos_level`.
 ```sas
 proc means data=dataset nway noprint;
 	class ID_number hos_level;
@@ -84,3 +84,13 @@ proc means data=result1 nway noprint;
 run;
 ```
 
+## Count the number of patients separately
+
+<table>
+<tr><td></td><td></td><th>Number of Visits</th><th>Number of Patients</th><th>Total Expense</th></tr>
+<tr><th rowspan="3">hospital Level</th><td>Third-level</td></tr><td></td><td></td><td></td>
+<tr><td>Second-level</td></tr><td></td><td></td><td></td>
+<tr><td>Third-level</td></tr><td></td><td></td><td></td>
+<tr><th rowspan="2">Community Hospital</th><td>Yes</td></tr><td></td><td></td><td></td>
+<tr><td>No</td></tr><td></td><td></td><td></td>
+</table>
