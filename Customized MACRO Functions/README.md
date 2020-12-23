@@ -16,6 +16,7 @@ Type of merge to be performed.
 + outer: outer join
 
 ***features(s)***
+
 While match-merging two datasets, The argument `feature(s)` specifies the variables to merge by. You can assign multiple variables (separated by blanks) to this argument.
 
 ## SAS MACRO Code
@@ -63,3 +64,11 @@ While match-merging two datasets, The argument `feature(s)` specifies the variab
 
 %mend merge;
 ```
+
+## How to Memorize
+While in Python, we have:
+```python
+import pandas as pd
+new_df = pd.merge(df1, df2, on = 'label or list', how = 'left')
+```
+They look quite similar.
