@@ -15,6 +15,9 @@ Type of merge to be performed.
 + inner: inner join
 + outer: outer join
 
+***features(s)***
+While match-merging two datasets, The argument `feature(s)` specifies the variables to merge by. You can assign multiple variables (separated by blanks) to this argument.
+
 ## SAS MACRO Code
 ```sas
 %macro merge(dataset1, dataset2, features, how, data_merged);
