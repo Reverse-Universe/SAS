@@ -60,5 +60,6 @@ However, there exist a fatal problem with the number-of-patient caluculation abo
 Another commonplace is that the record for registration is out of boundary of the period of time during which we would like to calculating the number of patients. For example, the registration bills was recorded at the end of year 2019, however, the medical treatment bills was recorded at the beginning of the year 2020. While calcuating the number of patients in 2020, we miss that patient.
 
 When this happens, a better job would be recognizing that this patient had receive medical care both in the year of 2019 and 2020. If we comply with this principle, how could we handle the problem more properly? 
-#### 
+#### Money-related variables
 The key to the problem is that both bills(registration and medical treatment) involve expense.
+

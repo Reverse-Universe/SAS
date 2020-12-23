@@ -1,7 +1,6 @@
 ### MERGE Function
 **Joins observation from two or more SAS datasets into a single observation.**
-
-**Encapsulates the MERGE Satement of SAS's DATA step into one macro function.**
+**Encapsulates the MERGE Satement of SAS's DATA step. into one macro function.**
 
 #### Syntax
 **%MERGE**_(dataset1, dataset2, feature(s), how, data_merged)_
