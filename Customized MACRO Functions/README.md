@@ -1,11 +1,19 @@
-<table>
-<tr> <th>MACRO Function</th> <th>Description</th> <th>Syntax</th> <th>SAS Code</th> <th>Example</th> <th>HowToMemorize</th> </tr>
-<tr>
-	<td>%MERGE()</td>
-	<td>Joins observation from two or more SAS datasets into a single observation.</td>
-	<td>%merge(dataset1, dataset2, feature(s), how, data_merged)</td>
-	<td>
+### MERGE Function
+**Joins observation from two or more SAS datasets into a single observation.**
+**Encapsulates the MERGE Satement of SAS's DATA step. into one macro function.**
 
+#### Syntax
+`**%MERGE**(dataset1, dataset2, feature(s), how, data_merged)`
+#### Arguments
+***how = left | right | inner | outer***
+
+Type of merge to be performed.
++ left: left join
++ right: right join
++ inner: inner join
++ outer: outer join
+
+#### SAS MACRO Code
 ```sas
 %macro merge(dataset1, dataset2, features, how, data_merged);
 	%if &how=left %then %do;
@@ -18,11 +26,35 @@
 		run;
 	%end;
 
+	%if &how=right %then %do;
+		proc sort data=&dataset1; by &features; run;
+		proc sort data=&dataset2; by &features; run;
+		data &data_merged;
+			merge &dataset1 &dataset2(in=in1);
+			by &features;
+			if in1;
+		run;
+	%end;
+
+	%if &how=left %then %do;
+		proc sort data=&dataset1; by &features; run;
+		proc sort data=&dataset2; by &features; run;
+		data &data_merged;
+			merge &dataset1(in=in1) &dataset2(in=in2);
+			by &features;
+			if in1 and in2;
+		run;
+	%end;
+
+	%if &how=left %then %do;
+		proc sort data=&dataset1; by &features; run;
+		proc sort data=&dataset2; by &features; run;
+		data &data_merged;
+			merge &dataset1(in=in1) &dataset2(in=in2);
+			by &features;
+			if in1 or in2;
+		run;
+	%end;
+
 %mend merge;
 ```
-
-	</td>
-	<td>%merge(a,b,ziduan,inner,new_ab)</td>
-	<td>pd.merge() in Pandas</td>
-</tr>
-</table>
