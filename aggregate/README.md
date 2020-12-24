@@ -126,13 +126,13 @@ Here's the variable dictionary for the raw data:
 
 <sup> 3. The relationships among these money-related variables are shown below:  </sup>
 
-<sup>Total Expense = Uncovered Charges + Covered Charges</sup>
+<sup>&ensp;&ensp;*Total Expense = Uncovered Charges + Covered Charges*</sup>
 
-<sup>Covered Charges = Deductible Payment + Payment Above Deductible</sup>
+<sup>&ensp;&ensp;*Covered Charges = Deductible Payment + Payment Above Deductible*</sup>
 
-<sup>Payment Above Deductible = Coinsurance Payment + Pooling Account Payment</sup>
+<sup>&ensp;&ensp;*Payment Above Deductible = Coinsurance Payment + Pooling Account Payment*</sup>
 
-<sup>Coinsurance Payment = Individual Account Payment + Cash Payment</sup>
+<sup>&ensp;&ensp;*Coinsurance Payment = Individual Account Payment + Cash Payment*</sup>
 
 <sup>4. The insurance fund is divided into two parts: individual account and pooled fund. Patients could pay the deductible and coinsurance by the money on his own individual account</sup>
 
