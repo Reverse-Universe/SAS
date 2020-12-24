@@ -90,16 +90,18 @@ Here's the variable dictionary for the raw data:
 	+ ID_number
 	+ Date
 	+ Hospital Code
-	+ Hospital Level
-	+ Types of Patient <sup>1</sup>
-+ **Money related variables**
+	+ Hospital Level <sup>1</sup>
+	+ Types of Patient <sup>2</sup>
++ **Money related variables**<sup>3</sup>
 	+  Total Expense
 	+  Uncovered Charges
 	+  Coverered Charges
-	+  Deductible
-	+  Coinsurance
-	+  Personal Account Payment
-	+  Pooling Acount Payment
+	+  Deductible Payment
+	+  Payment Above Deductible
+	+  Coinsurance Payment
+	+  Cash Payment
+	+  Individual Account Payment <sup>4</sup>
+	+  Pooling Acount Payment <sup>5</sup>
 + **Variables for expenses in different categories**
 	+ Registration Fee
 	+ Diagnosis Fee
@@ -118,7 +120,23 @@ Here's the variable dictionary for the raw data:
 	+ Herbs Fee
 	+ Other Fee
 
-<sup> 1. There are five type of patients: outpatient&emergency, inpatient&ICU, critial illness, pharmacy, internal hospital. Different types of patients corresponds to different medical insurance policy (like different deductible and reimbursement proportion). ICU has been excluded from emergency and merged to inpatient, since both ICU patinet and inpatient have to pay for the hospital beds. So the emergency does not include expense on ICU.</sup>
+<sup>1. Hospital Level: Third-level, Second-level, First-level</sup>
+
+<sup> 2. There are five type of patients: ① outpatient&emergency ② hospitalization(inpatient)&ICU ③ critial illness ④ pharmacy ⑤ internal hospital. Different types of patients correspond to different medical insurance policy (like different deductible and reimbursement proportion). ICU has been excluded from emergency and merged to inpatient, since both ICU patinets and inpatients have to pay for the hospital beds. The emergency does not include expense on ICU.</sup>
+
+<sup> 3. The relationships among these money-related variables are shown below:  </sup>
+
+<sup>Total Expense = Uncovered Charges + Covered Charges</sup>
+
+<sup>Covered Charges = Deductible Payment + Payment Above Deductible</sup>
+
+<sup>Payment Above Deductible = Coinsurance Payment + Pooling Account Payment</sup>
+
+<sup>Coinsurance Payment = Individual Account Payment + Cash Payment</sup>
+
+<sup>4. The insurance fund is divided into two parts: individual account and pooled fund. Patients could pay the deductible and coinsurance by the money on his own individual account</sup>
+
+<sup>5. Pooling Account Payment refers to the expense paid by the insurer, which is the pooled fund.  </sup>
 
 <table>
 <tr><td></td><td></td><th>Number of Visits</th><th>Number of Patients</th><th>Total Expense</th></tr>
