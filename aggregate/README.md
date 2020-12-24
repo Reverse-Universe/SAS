@@ -85,14 +85,18 @@ run;
 ```
 
 ## Count the number of patients separately
+Each row of the dataset 'outpatient_settlement' repesents one bill, which indicates how the total amount of expense being decomposited into smaller ones, and how much money insurer and insured should pay towards this bill.
+
 Here's the variable dictionary for the raw data:
 + **Basic variables**
 	+ ID_number
 	+ Date
 	+ Hospital Code
 	+ Hospital Level <sup>1</sup>
+	+ Community Hospital <sup>2</sup>
 	+ Types of Patient <sup>2</sup>
-+ **Money related variables**<sup>3</sup>
+	+ reg_or_medi <sup>3</sup>
++ **Money related variables**<sup>4</sup>
 	+  Total Expense
 	+  Uncovered Charges
 	+  Coverered Charges
@@ -100,8 +104,8 @@ Here's the variable dictionary for the raw data:
 	+  Payment Above Deductible
 	+  Coinsurance Payment
 	+  Cash Payment
-	+  Individual Account Payment <sup>4</sup>
-	+  Pooling Acount Payment <sup>5</sup>
+	+  Individual Account Payment <sup>5</sup>
+	+  Pooling Acount Payment <sup>6</sup>
 + **Variables for expenses in different categories**
 	+ Registration Fee
 	+ Diagnosis Fee
@@ -122,9 +126,13 @@ Here's the variable dictionary for the raw data:
 
 <sup>1. Hospital Level: Third-level, Second-level, First-level</sup>
 
-<sup> 2. There are five type of patients: ① outpatient&emergency ② hospitalization(inpatient)&ICU ③ critial illness ④ pharmacy ⑤ internal hospital. Different types of patients correspond to different medical insurance policy (like different deductible and reimbursement proportion). ICU has been excluded from emergency and merged to inpatient, since both ICU patinets and inpatients have to pay for the hospital beds. The emergency does not include expense on ICU.</sup>
+<sup>2. the variables `community_hospital` specifies whether a hospital is a  community one. in most cases, the level of community hospitals is *FIRST*. 1 for community hospital and 0 for non-community hospital</sup>
 
-<sup> 3. The relationships among these money-related variables are shown below:  </sup>
+<sup> 3. There are five type of patients: ① outpatient&emergency ② hospitalization(inpatient)&ICU ③ critial illness ④ pharmacy ⑤ internal hospital. Different types of patients correspond to different medical insurance policy (like different deductible and reimbursement proportion). ICU has been excluded from emergency and merged to inpatient, since both ICU patinets and inpatients have to pay for the hospital beds. The emergency does not include expense on ICU.</sup>
+
+<sup>4. `reg_or_medi`: whether a record in database refers to the bill for registration or medical treatment </sup>
+
+<sup> 5. The relationships among these money-related variables are shown below:  </sup>
 
 <sup>&ensp;&ensp;*Total Expense = Uncovered Charges + Covered Charges*</sup>
 
@@ -134,9 +142,12 @@ Here's the variable dictionary for the raw data:
 
 <sup>&ensp;&ensp;*Coinsurance Payment = Individual Account Payment + Cash Payment*</sup>
 
-<sup>4. The insurance fund is divided into two parts: individual account and pooled fund. Patients could pay the deductible and coinsurance by the money on his own individual account</sup>
+<sup>6. The insurance fund is divided into two parts: individual account and pooled fund. Patients could pay the deductible and coinsurance by the money on his own individual account</sup>
 
-<sup>5. Pooling Account Payment refers to the expense paid by the insurer, which is the pooled fund.  </sup>
+<sup>7. Pooling Account Payment refers to the expense paid by the insurer, which is the pooled fund.  </sup>
+
+### Task and Traps
+Task: Aggregate and summarize the outpatient settlement data and output the result in the form of the table below:
 
 <table>
 <tr><td></td><td></td><th>Number of Visits</th><th>Number of Patients</th><th>Total Expense</th></tr>
@@ -146,3 +157,51 @@ Here's the variable dictionary for the raw data:
 <tr><th rowspan="2">Community Hospital</th><td>Yes</td><td></td><td></td><td></td></tr>
 <tr><td>No</td><td></td><td></td><td></td></tr>
 </table>
+
+**Trap**: Since most community hospitals are also the ones of first level. Is it possible that the number of patient going to the non-community hospital approximately equals to **the sum of** number of patient going to the hospials of second and third level?
+
+Sadly, we can't do this. Supposing that one patient had gone to three hospitals of different levels, each level's `number_of_patient` will increase by one. However, non-community's `number_of_patient` will also increase by one, not two. 
+
+But there is good news: the `number_of_visits` is free of this restriction and could be added together in any way you like.
+
+**TIP: You have to aggregate the number of patients by `hospital_level` and `community_hosptial` separately**
+
+```sas
+/* aggregate the number of patients by hospital level */
+proc means data=raw_data nway noprint;
+	class ID_number hos_level;
+	var total_expense;
+	output out=id_hos_level sum=;
+run;
+
+data id_hos_level;
+	set id_hos_level;
+	where total_expense > 0;
+	number_of_patients = 1;
+run;
+
+proc means data=id_hos_level nway noprint;
+	class hos_level;
+	var number_of_patients;
+	output out=hos_level_num_patient sum=;
+run;
+
+/* aggregate the number of patients by whether community hospital */
+proc means data=raw_data nway noprint;
+	class ID_number community_hos;
+	var total_expense;
+	output out=id_com_hos sum=;
+run;
+
+data id_com_hos;
+	set id_com_hos;
+	where total_expense > 0;
+	number_of_patients = 1;
+run;
+
+proc means data=id_com_hos nway noprint;
+	class community_hos;
+	var number_of_patients;
+	output out=com_num_patient sum=;
+run;
+```
