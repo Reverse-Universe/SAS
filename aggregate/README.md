@@ -3,7 +3,7 @@
 ## number of visits
 For outpatient clinics,  since outpatients have to go to register before going to the doctors and seeking for consultations, each time a patient goes to outpatient clinics and foots the bills, he will receive two bills — one for registration, and the other for expenditures on medical treatment (in some situations, expenditure bill could be divided into small ones). The hospitals then document each bills for an online database, and use a specific variable (called `reg_or_medi`) to distinguish whether a record in database refers to the bill for registration or medical treatment. Specifically, '1' for registration and '2' for medical treatment.
 
-Therefore, we can create a new variable called `number_of_visits`. Since each time a patient goes to the hospital, he will only receive one registraion bill, so we could let the `number_of_visits` variable marked by 1.
+Therefore, we can create a new variable called `number_of_visits`. Since each time a patient goes to see the doctor, he will only receive one registraion bill, so we could let the `number_of_visits` variable marked by 1.
 
 <pre>
 if reg_or_medi='1' then number_of_visits=1;
@@ -63,17 +63,17 @@ When this happens, a better job would be recognizing that this patient had recei
 ### Money-related variables
 The key to the problem is that both bills(registration and medical treatment) involve expense. The patient could be viewed as having gone to the hospital as long as he had paid for the bill, no matter what kind of that.
 
-Firstly, sum up the total_cost of each patient in each group(`hos_level`). Secondly, while taking the bills of zero-expense (`total_cost` = 0) into consideration, it would be better to drop this kind of bills. Thirdly, add a new column called `number_of_patients` = 1. Finally, aggregate this column by `hos_level`.
+Firstly, sum up the total_expense of each patient in each group(`hos_level`). Secondly, while taking the bills of zero-expense (`total_expense` = 0) into consideration, it would be better to drop this kind of bills. Thirdly, add a new column called `number_of_patients` = 1. Finally, aggregate this column by `hos_level`.
 ```sas
 proc means data=dataset nway noprint;
 	class ID_number hos_level;
-	var total_cost;
+	var total_expense;
 	output out=result1 sum=;
 run;
 
 data result1;
 	set result1;
-	where total_cost > 0;
+	where total_expense > 0;
 	number_of_patients = 1;
 run;
 
@@ -85,6 +85,40 @@ run;
 ```
 
 ## Count the number of patients separately
+Here's the variable dictionary for the raw data:
++ **Basic variables**
+	+ ID_number
+	+ Date
+	+ Hospital Code
+	+ Hospital Level
+	+ Types of Patient <sup>1</sup>
++ **Money related variables**
+	+  Total Expense
+	+  Uncovered Charges
+	+  Coverered Charges
+	+  Deductible
+	+  Coinsurance
+	+  Personal Account Payment
+	+  Pooling Acount Payment
++ **Variables for expenses in different categories**
+	+ Registration Fee
+	+ Diagnosis Fee
+	+ Treatment Fee
+	+ Surgical Supplies Fee
+	+ Hospitalization Fee
+	+ Nursing Fee
+	+ Examination Fee
+	+ Lab Fee
+	+ Medical Imaging Fee
+	+ X-ray Fee
+	+ Blood Transfusion Fee
+	+ Oxygen Fee
+	+ Medication Fee
+	+ Chinese patent medicine Fee
+	+ Herbs Fee
+	+ Other Fee
+
+<sup> 1. There are five type of patients: outpatient&emergency, inpatient&ICU, critial illness, pharmacy, internal hospital. Different types of patients corresponds to different medical insurance policy (like different deductible and reimbursement proportion). ICU has been excluded from emergency and merged to inpatient, since both ICU patinet and inpatient have to pay for the hospital beds. So the emergency does not include expense on ICU.</sup>
 
 <table>
 <tr><td></td><td></td><th>Number of Visits</th><th>Number of Patients</th><th>Total Expense</th></tr>
