@@ -1,18 +1,42 @@
 #  Batch Processing with SAS®: reading consecutive SAS files
 
-
+## Incremental data by month
 Raw data are stored on the server as SAS files. Each file hold the records of a whole month, and the data of different types of patients are stored separately. The reason for storing the raw data by month is that, for example, the data of outpatient and emergency bills may eat up hardware capacity of about 3-5 GBs every month. The table below shows how data becoming larger and larger over time.
 |YearMonth|SAS file|number of rows|number of columns|Size|
 |---------|--------|--------------|-----------------|----|
 |2003/01|OutpatientEmergency0301.sas|10000000+ rows|20+ columns|1.8 GB|
 |2009/12|OutpatientEmergency0912.sas|20000000+ rows|20+ columns|3.6 GB|
 |2019/12|OutpatientEmergency1912.sas|40000000+ rows|20+ columns|4.2 GB|
+
 *Notes:not include index files*
 
 + **Not too LARGE** Keep the size of each SAS file within 10GB, and avoid one single file being too big to handle with.
-+ **Keep Everything INTACT** The data in the SAS files are not first-hand. At the beginning of each month, we extract fresh data collected last month from data warehouse (in the form of `.txt`), and tranform them into SAS files. So the SAS files would be updated every month (not every day, because it takes some time for the accuracy of data to be verified before extracted from the data warehouse). Every month's fresh data (SAS files) would be under the path of `d:\YearMonth\`, for example, the folder `d:\202001\` is used to store the data of Janurary 2020, which recording all the bills incurred in that month. Keeping everything intact means not to merge data, instead, convert one txt file to one sas file at a time.
 
++ **Keep Everything INTACT** The data in the SAS files are not first-handed. At the beginning of each month, we extract fresh data (incremental data) collected last month from data warehouse (in the form of `.txt`), and tranform them into SAS files. So the SAS files would be updated every month (not every day, because it takes some time for the accuracy of data to be verified before extracted from the data warehouse). Every month's fresh data (SAS files) would be under the path of `D:\data\YearMonth\`, for example, the folder `D:\data\202001\` is used to store the data of Janurary 2020, which recording all the bills incurred in that month. Keeping everything intact means not to merge data, instead, convert one txt file to one sas file at a time. If some `.txt` files have some problems and have to be converted into SAS format after being fixed, we could avoid reading irrelevant files. Finally, the amount of I/O that is required could be reduced.
+## Directories and SAS files
+The name of each sas file contains the year and month of the data, in the format of `4-length digital`: '2001' is for 'Januray,2020'.
+|Directory|Year and Month|SAS files|
+|---------|--------------|---------|
+|D:\data\202001\\ |Jan2020|<ul><li>OutpatientEmergency2001.sas</li><li>Hospitalization2001.sas</li><li>ICU2001.sas</li><li>CriticalIllness2001.sas</li><li>Pharmacy2001.sas</li><li>InternalHos2001.sas</li></ul>|
+|D:\data\202012\\ |Dec2020|<ul><li>OutpatientEmergency2012.sas</li><li>Hospitalization2012.sas</li><li>ICU2012.sas</li><li>CriticalIllness2012.sas</li><li>Pharmacy2012.sas</li><li>InternalHos2012.sas</li></ul>|
+## Primitive code without MACRO
+**Target:** Reading the data from Jan2010 to Dec2020.
+```sas
+libname lib1001 'D:\data\201001';
+libname lib1002 'D:\data\201002';
+...
+libname lib2012 'D:\data\202012';
 
+data transcation_data;
+set
+lib1001.OutpatientEmergency1001
+lib1001.Hospitalization1001
+lib1001.ICU1001
+lib1001.CriticalIllness1001
+lib1001.Pharmacy1001
+lib1001.InternalHos1001
+
+```
 Here is an [example](https://documentation.sas.com/?cdcId=pgmsascdc&cdcVersion=9.4_3.5&docsetId=mcrolref&docsetTarget=n01vuhy8h909xgn16p0x6rddpoj9.htm&locale=en) from *SAS® 9.4 and SAS® Viya® 3.5 Programming Documentation*. 
 
 ```sas
