@@ -19,6 +19,7 @@ The name of each sas file contains the year and month of the data, in the format
 |---------|--------------|---------|
 |D:\data\201001\\ |Jan2010|<ul><li>OutpatientEmergency1001.sas</li><li>Hospitalization1001.sas</li><li>ICU1001.sas</li><li>CriticalIllness1001.sas</li><li>Pharmacy1001.sas</li><li>InternalHos1001.sas</li></ul>|
 |D:\data\202012\\ |Dec2020|<ul><li>OutpatientEmergency2012.sas</li><li>Hospitalization2012.sas</li><li>ICU2012.sas</li><li>CriticalIllness2012.sas</li><li>Pharmacy2012.sas</li><li>InternalHos2012.sas</li></ul>|
+
 ## Primitive code without MACRO
 **Target:** Reading the data from Jan2010 to Dec2020.
 ```sas
@@ -55,8 +56,12 @@ lib1002.CriticalIllness2012
 lib1002.Pharmacy2012
 lib1002.InternalHos2012
 ;
+<WHERE STATEMENT>;
+...
 run;
 ```
+
+## Tricks to write more concise code in SAS
 Here is an [example](https://documentation.sas.com/?cdcId=pgmsascdc&cdcVersion=9.4_3.5&docsetId=mcrolref&docsetTarget=n01vuhy8h909xgn16p0x6rddpoj9.htm&locale=en) from *SAS® 9.4 and SAS® Viya® 3.5 Programming Documentation*. 
 
 ```sas
@@ -83,74 +88,76 @@ Here is an [example](https://documentation.sas.com/?cdcId=pgmsascdc&cdcVersion=9
     01JAN2016
     01FEB2016
 
-/* Please input latest year and month */
-%let today_YM_long = 202011;
+Let's have a look that the functions **INPUTN()** and **INTCK()** used above.
 
-/* Please input raw data */
-data raw_data;
-input sfzh $18. check_year_s check_year_e;
-datalines;
-310XXXXXXXXXXXXXXX 20180000 20180999
-;
+**INPUTN**
+> Read a character value using an informat.
+
+**INTCK(interval, start-date, end-date, <'method'>)**
+> Returns the number of interval boundaries of a given kind that lie between two dates, times, or datetime values.
+
+***interval***
+
+&ensp;&ensp;*specifies the name of the basic interval type. For example, YEAR specifies yearly intervals.*
+
+***start-date***
+
+&ensp;&ensp;*specifies a SAS expression that represents the starting SAS date, time, or datetime value.*
+
+***end-date***
+
+&ensp;&ensp;*specifies a SAS expression that represents the ending SAS date, time, or datetime value.*
+
+## Taking care of the date format
+The start date and end date have been put in the dataset below: 
+|min_year_month|max_year_month|
+|--------------|--------------|
+|201001|202012|
+
+Before we assign these two dates to the macro variables, we have to 'fix' the format of date. The `start-date` and `end-date` in INTCK function consist of YEAR, MONTH and DAY. However, `min_year_month` and `max_year_month` only have YEAR and MONTH. Try to combine it with the string '01':
+```sas
+data min_max_year_month; 
+    set min_max_year_month; 
+    min_YYMMDD = cat(min_year_month,'01'); 
+    max_YYMMDD = cat(max_year_month,'01'); 
+    keep min_YYMMDD max_YYMMDD; 
 run;
+```
 
-%let today_YM_short = %sysfunc(substr(&today_YM_long,3,4));
-%let dot=.;
-
-/* 提取起始年的最小数，结束年的最大数 */
-proc sql;
-    create table min_max_year_month as
-    select put(min(check_year_s), 8.) as min_year_month,
-           put(max(check_year_e), 8.) as max_year_month
-    from raw_data;
-quit;
-
-/* 提取四位数的年月字符串，然后添加1号（为了之后输出到date_loop宏函数中） */
-dat min_max_year_month;
-    set min_max_year_month;
-    min_year_month = cat(substr(min_year_month,1,6), '01');
-    max_year_month = cat(substr(max_year_month,1,6), '01');
-run;
-
-/*行转列，便于之后的call symput*/
+Then use **CALL SYMPUT** to assgin them to macro variables.
+```sas
+/* One Columns to One YYMMDD --> One Rows to One YYMMDD */
 proc transpose data=min_max_year_month
     out=macro_name_value(rename=(col1=macro_value))
     name=macro_name;
-    var min_year_month max_year_month;
+    var min_YYMMDD max_YYMMDD;
 run;
+```
+min_max_year_month has been tranformed to:
+| |macro_name|macro_value|
+|-|---------|-----------|
+|1|min_YYMMDD|20100101|
+|2|max_YYMMDD|20201201|
 
-/* 最小年月和最大年月分别赋值给宏变量minyear和maxyear */
+```sas
 data macro_name_value;
     set macro_name_value;
     call symput(macro_name, macro_value);
 run;
 
-%put min year month = &min_year_month;
-%put max year month = &max_year_month;
+%put the start YYMMDD is: &min_YYMMDD;
+%put the end YYMMDD is : &max_YYMMDD;
+```
+
+    LOG:
+    the start YYMMDD is: 20100101
+    the end YYMMDD is : 20201201
 
 
-%macro date_loop_lib(start,end);
-%let start=%sysfunc(inputn(&start, anydtdte 8.));
-%let end=%sysfunc(inputn(&end, anydtdte 8.));
-%let dif=%sysfunc(intck(month, &start, &end));
 
-data jsbx; set
-/*批量libname*/
-%do i=0 %to &dif;
-%let long_YearMonth = %sysfunc(intnx(month, &start, &i, b), YYMM.);
-%let short_YearMonth = %sysfunc(substr(&long_YearMonth), 3, 4));
-y&short_YearMonth&dot.mz&short_YearMonth
-y&short_YearMonth&dot.zy&short_YearMonth
-...
-%end;
-;
 
-where ...
-...
-run;
 
-%mend date_loop_lib;
-%date_loop_lib(&min_year_month, &max_year_month)
+
 
 
 
