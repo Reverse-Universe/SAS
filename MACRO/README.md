@@ -17,7 +17,7 @@ Raw data are stored on the server as SAS files. Each file hold the records of a 
 The name of each sas file contains the year and month of the data, in the format of `4-length digital`: '2001' is for 'Januray,2020'.
 |Directory|Year and Month|SAS files|
 |---------|--------------|---------|
-|D:\data\202001\\ |Jan2020|<ul><li>OutpatientEmergency2001.sas</li><li>Hospitalization2001.sas</li><li>ICU2001.sas</li><li>CriticalIllness2001.sas</li><li>Pharmacy2001.sas</li><li>InternalHos2001.sas</li></ul>|
+|D:\data\201001\\ |Jan2010|<ul><li>OutpatientEmergency1001.sas</li><li>Hospitalization1001.sas</li><li>ICU1001.sas</li><li>CriticalIllness1001.sas</li><li>Pharmacy1001.sas</li><li>InternalHos1001.sas</li></ul>|
 |D:\data\202012\\ |Dec2020|<ul><li>OutpatientEmergency2012.sas</li><li>Hospitalization2012.sas</li><li>ICU2012.sas</li><li>CriticalIllness2012.sas</li><li>Pharmacy2012.sas</li><li>InternalHos2012.sas</li></ul>|
 ## Primitive code without MACRO
 **Target:** Reading the data from Jan2010 to Dec2020.
@@ -29,6 +29,7 @@ libname lib2012 'D:\data\202012';
 
 data transcation_data;
 set
+/* Jan2010 */
 lib1001.OutpatientEmergency1001
 lib1001.Hospitalization1001
 lib1001.ICU1001
@@ -36,6 +37,25 @@ lib1001.CriticalIllness1001
 lib1001.Pharmacy1001
 lib1001.InternalHos1001
 
+/* Feb2010 */
+lib1002.OutpatientEmergency1002
+lib1002.Hospitalization1002
+lib1002.ICU1002
+lib1002.CriticalIllness1002
+lib1002.Pharmacy1002
+lib1002.InternalHos1002
+
+...
+
+/* Dec2020 */
+lib1002.OutpatientEmergency2012
+lib1002.Hospitalization2012
+lib1002.ICU2012
+lib1002.CriticalIllness2012
+lib1002.Pharmacy2012
+lib1002.InternalHos2012
+;
+run;
 ```
 Here is an [example](https://documentation.sas.com/?cdcId=pgmsascdc&cdcVersion=9.4_3.5&docsetId=mcrolref&docsetTarget=n01vuhy8h909xgn16p0x6rddpoj9.htm&locale=en) from *SAS® 9.4 and SAS® Viya® 3.5 Programming Documentation*. 
 
