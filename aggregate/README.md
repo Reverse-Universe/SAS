@@ -256,21 +256,14 @@ orange
 
 green
 
-<table><tbody>
+table><tbody>
     <tr>
-        <th rowspan="3">我占了三行</th>
-        <th>第一列</th>
-        <th>第二列</th>
-        <th>第三列</th>
+        <th>方法说明</th><th>颜色名称</th><th>颜色</th>
     </tr>
     <tr>
-        <td>第一列</td>
-        <td>第二列</td>
-        <td>第三列</td>
+        <td><font color="Hotpink">此处实现方法利用 CSDN-markdown 内嵌 html 语言的优势</font></td><td><font color="Hotpink">Hotpink</font></td><td bgcolor="Hotpink">rgb(240, 248, 255)</td>
     </tr>
     <tr>
-        <td>第一列</td>
-        <td>第二列</td>
-        <td>第三列</td>
+        <td><font color="Pink">借助 table, tr, td 等表格标签的 bgcolor 属性实现背景色设置</font></td><td><font color="pink">AntiqueWhite</font></td><td bgcolor="Pink">rgb(255, 192, 203)</td>
     </tr>
-</table>  
+</table>
