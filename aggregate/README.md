@@ -206,7 +206,7 @@ proc means data=id_com_hos nway noprint;
 run;
 ```
 
-## More complicated case
+## A more complicated case
 WHAT IF we want to get the result like this:
 <table>
 <tr><td></td><td></td><td></td><th colspan='8'>Outpaitent&Emergency</th><th colspan='8'>hospitalization(inpatient)&ICU</th><th>...</th></tr>
@@ -238,16 +238,29 @@ WHAT IF we want to get the result like this:
 
 <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
 
+Two more categorical variables are added to the output table: `YEAR` as the top row header, and `Type of Patients` as the top column header.
 
-<style>
-th {
-         background-color: red;
-        /* sets table header cell background colour */
-    }
-</style>
+IF the `Number of Patients` are omitted, the problem will become much easier, and by that I mean, we will only need **PROCMEANS** and **PROC TABLULATE** procedures: 
+```sas
+proc means data=raw_data nway noprint;
+	class year hos_level community_hos type_of_patient;
+	var number_of_visits
+		total_expense uncovered_charges <other money related variables>
+		registration_fee diagnosis_fee <other variables for expenses in different categories>;
+	output out=result1 sum=;
+run;
 
-<table>
-<tr><th>This is a heading</th></th>
-</table>
+proc tabulate data=result1;
+	class year hos_level community_hos type_of_patient;
+	var number_of_visits
+		total_expense uncovered_charges <other money related variables>
+		registration_fee diagnosis_fee <other variables for expenses in different categories>;
+	/* the CLASS and VAR statement are just the same as that of PROC MEANS */
+	table year=''*(hos_level='' community_hos=''), type_of_patient=''*sum=''*f=20.0*(number_of_visits
+		total_expense uncovered_charges <other money related variables>
+		registration_fee diagnosis_fee <other variables for expenses in different categories>) 
+		/ style={width=5000};
+run;
+```
 
-
+Since the `number_of_visits` and `number_of_patients` cannot be aggregated at the same time (in the same **PROC MEANS** procedure). 
