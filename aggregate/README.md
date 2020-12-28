@@ -239,8 +239,8 @@ WHAT IF we want to get the result like this:
 <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
 
 <style>
-</style>
 .th {background: red;}
+</style>
 <table>
 <th class="th">Test</th>
 </table>
