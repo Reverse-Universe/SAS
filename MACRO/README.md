@@ -114,7 +114,7 @@ The start date and end date have been put in the dataset below:
 |--------------|--------------|
 |201001|202012|
 
-Before we assign these two dates to the macro variables, we have to 'fix' the format of date. The `start-date` and `end-date` in INTCK function consist of YEAR, MONTH and DAY. However, `min_year_month` and `max_year_month` only have YEAR and MONTH. Try to combine it with the string '01':
+Before we assign these two dates to the macro variables, we have to 'modify' the format of date. The `start-date` and `end-date` in INTCK function must have YEAR, MONTH and DAY. However, `min_year_month` and `max_year_month` only have YEAR and MONTH. Try to combine it with the string '01':
 ```sas
 data min_max_year_month; 
     set min_max_year_month; 
@@ -152,10 +152,51 @@ run;
     LOG:
     the start YYMMDD is: 20100101
     the end YYMMDD is : 20201201
+The values of `min_YYMMDD` and `max_YYMMDD` are in the expected format.
 
+## The Power of SAS MACRO function
+Create the `%YYMM_loop(start, end)` MACRO function to loop through months in the DATA Step, and call it after defined.
+```sas
+%macro YYMM_loop(start,end);
+    %let start = %sysfunc(inputn(&start, anydtdte 8.));
+    %let end = %sysfunc(inputn(&end, anydtdte 8.));
+    %let dif = %sysfunc(intck(month, &start, &end));
 
+    data transaction_data; set
+    /* batch processing: reading transaction data from every month, every type */
+    %do i=0 %to &dif;
+        %let long_YYMM = %sysfunc(intnx(month, &start, &i, b), YYMMN.);
+        %let short_YYMM = %sysfunc(substr(&long_YYMM), 3, 4));
+        lib&short_YYMM&dot.OutpatientEmergency&short_YYMM
+        lib&short_YYMM&dot.Hospitalization&short_YYMM
+        lib&short_YYMM&dot.CriticalIllness&short_YYMM
+        lib&short_YYMM&dot.Pharmacy&short_YYMM
+        lib&short_YYMM&dot.InternalHos&short_YYMM
+    %end;
+    ;  /* DON'T FORGET this semicolon in the SET Statement */
+    <Other Statement>;
+    run;
+%mend YYMM_loop;
 
+%YYMM_loop(&min_YYMMDD, &max_YYMMDD);
+```
 
+## More Details
+For more information about the **Date, Time and Datetime formats**, See [this page](https://documentation.sas.com/?cdcId=vdmmlcdc&cdcVersion=8.1&docsetId=ds2pg&docsetTarget=p0bz5detpfj01qn1kz2in7xymkdl.htm&locale=en) on *SAS® Visual Data Mining and Machine Learning 8.1*.
+
+Some of the most commonly used formats are listed below:
+|Type of Language Element|Language Element|Input|Result|
+|------------------------|----------------|-----|------|
+|Date formats|DDMMYY.|19069|17/03/12|
+| |DDMMYYD.|19069|17-03-12|
+|Time formats|TOD.|19069|04:53:28|
+|Year formats|YYMMD.|19069|2012-03|
+| |YYMMN.|19069|201203|
+| |YYMMP.|19069|2012.03|
+| |YYMMS.|19069|2012/03|
+| |YYMMDD.|19069|12-03-17|
+| |YYMMDDS.|19069|12/03/17|
+|Year/Quarter formats|YYQ.|19069|2012Q1|
 
 
 
