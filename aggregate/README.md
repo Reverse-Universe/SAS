@@ -256,7 +256,7 @@ orange
 
 green
 
-table><tbody>
+<table><tbody>
     <tr>
         <th>方法说明</th><th>颜色名称</th><th>颜色</th>
     </tr>
