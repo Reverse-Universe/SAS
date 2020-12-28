@@ -147,7 +147,7 @@ Here's the variable dictionary for the raw data:
 <sup>7. Pooling Account Payment refers to the expense paid by the insurer, which is the pooled fund.  </sup>
 
 ### Task and Traps
-Task: Aggregate and summarize the outpatient settlement data and output the result in the form of the table below:
+**Task:** Aggregate and summarize the outpatient settlement data and output the result in the form of the table below:
 
 <table>
 <tr><td></td><td></td><th>Number of Visits</th><th>Number of Patients</th><th>Total Expense</th></tr>
@@ -205,4 +205,55 @@ proc means data=id_com_hos nway noprint;
 	output out=com_num_patient sum=;
 run;
 ```
+
+## More complicated case
+WHAT IF we want to get the result like this:
+<table>
+<tr><td></td><td></td><td></td><th colspan='8'>Outpaitent&Emergency</th><th colspan='8'>hospitalization(inpatient)&ICU</th><th>...</th></tr>
+<tr><td></td><td></td><td></td><th>Number of Visits</th><th>Number of Patients</th><th>Total Expense</th><th>Uncovered Charges</th><th>...</th><th>Registration Fee</th><th>Diagnosis Fee</th><th>...</th><th>Number of Visits</th><th>Number of Patients</th><th>Total Expense</th><th>Uncovered Charges</th><th>...</th><th>Registration Fee</th><th>Diagnosis Fee</th><th>...</th><th>...</th></tr>
+
+<tr><th rowspan='6' bgcolor="#BBEBE0">Year 2010</th><th rowspan='3'>Hospital Level</th><th>Third-level</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><th>Second-level</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><th>First-level</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><th rowspan='3'>Community Hospital</th><th>Third-level</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><th>Second-level</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><th>First-level</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+
+<tr><th rowspan='6' bgcolor="#7FEBD3">Year 2011</th><th rowspan='3'>Hospital Level</th><th>Third-level</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><th>Second-level</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><th>First-level</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><th rowspan='3'>Community Hospital</th><th>Third-level</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><th>Second-level</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><th>First-level</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+
+<tr><th>...</th><th>...</th><th>...</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+
+<tr><th rowspan='6' bgcolor='#27E0B8'>Year 2020</th><th rowspan='3'>Hospital Level</th><th>Third-level</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><th>Second-level</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><th>First-level</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><th rowspan='3'>Community Hospital</th><th>Third-level</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><th>Second-level</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><th>First-level</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+</table>
+
+<td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+
+<table>
+<th bgcolor='#27E0B8'>Test</th>
+</table>
+
+blue
+#ACCFE3
+#6EB9E3
+#3CA7E3
+#1B8BC9
+
+orange
+#F7E0D6
+#EBBCA9
+#EB9F73
+#EB7544
+
+green
+
 
