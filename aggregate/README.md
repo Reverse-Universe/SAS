@@ -212,14 +212,14 @@ WHAT IF we want to get the result like this:
 <tr><td></td><td></td><td></td><th colspan='8'>Outpaitent&Emergency</th><th colspan='8'>hospitalization(inpatient)&ICU</th><th>...</th></tr>
 <tr><td></td><td></td><td></td><th>Number of Visits</th><th>Number of Patients</th><th>Total Expense</th><th>Uncovered Charges</th><th>...</th><th>Registration Fee</th><th>Diagnosis Fee</th><th>...</th><th>Number of Visits</th><th>Number of Patients</th><th>Total Expense</th><th>Uncovered Charges</th><th>...</th><th>Registration Fee</th><th>Diagnosis Fee</th><th>...</th><th>...</th></tr>
 
-<tr><th rowspan='6' bgcolor="#BBEBE0">Year 2010</th><th rowspan='3'>Hospital Level</th><th>Third-level</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><th rowspan='6'>Year 2010</th><th rowspan='3'>Hospital Level</th><th>Third-level</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
 <tr><th>Second-level</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
 <tr><th>First-level</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
 <tr><th rowspan='3'>Community Hospital</th><th>Third-level</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
 <tr><th>Second-level</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
 <tr><th>First-level</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
 
-<tr><th rowspan='6' bgcolor="#7FEBD3">Year 2011</th><th rowspan='3'>Hospital Level</th><th>Third-level</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><th rowspan='6'>Year 2011</th><th rowspan='3'>Hospital Level</th><th>Third-level</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
 <tr><th>Second-level</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
 <tr><th>First-level</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
 <tr><th rowspan='3'>Community Hospital</th><th>Third-level</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
@@ -228,7 +228,7 @@ WHAT IF we want to get the result like this:
 
 <tr><th>...</th><th>...</th><th>...</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
 
-<tr><th rowspan='6' bgcolor='#27E0B8'>Year 2020</th><th rowspan='3'>Hospital Level</th><th>Third-level</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><th rowspan='6'>Year 2020</th><th rowspan='3'>Hospital Level</th><th>Third-level</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
 <tr><th>Second-level</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
 <tr><th>First-level</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
 <tr><th rowspan='3'>Community Hospital</th><th>Third-level</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
@@ -238,63 +238,16 @@ WHAT IF we want to get the result like this:
 
 <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
 
+
 <style>
-.th {background: red;}
+table th {
+         background-color: #FF0000;
+        /* sets table header cell background colour */
+    }
 </style>
+
 <table>
-<th class="th">Test</th>
+<tr><th>This is a heading</th></th>
 </table>
 
 
-## Table Styling in Markdown
-
-<style>
-.heatMap {
-    width: 70%;
-    text-align: center;
-}
-.heatMap th {
-background: grey;
-word-wrap: break-word;
-text-align: center;
-}
-.heatMap tr:nth-child(1) { background: red; }
-.heatMap tr:nth-child(2) { background: orange; }
-.heatMap tr:nth-child(3) { background: green; }
-</style>
-
-<div class="heatMap">
-
-| Everything | in this table | is Centered |  and the table will only take up 70% of the screen width  | 
-| -- | -- | -- | -- |
-| This | is | a | Red Row |
-| This | is | an | Orange Row |
-| This | is | a | Green Row |
-
-</div>
-
-blue
-#ACCFE3
-#6EB9E3
-#3CA7E3
-#1B8BC9
-
-orange
-#F7E0D6
-#EBBCA9
-#EB9F73
-#EB7544
-
-green
-
-<table><tbody>
-    <tr>
-        <th>方法说明</th><th>颜色名称</th><th>颜色</th>
-    </tr>
-    <tr>
-        <td><font color="Hotpink">此处实现方法利用 CSDN-markdown 内嵌 html 语言的优势</font></td><td><font color="Hotpink">Hotpink</font></td><td bgcolor="Hotpink">rgb(240, 248, 255)</td>
-    </tr>
-    <tr>
-        <td><font color="Pink">借助 table, tr, td 等表格标签的 bgcolor 属性实现背景色设置</font></td><td><font color="pink">AntiqueWhite</font></td><td bgcolor="Pink">rgb(255, 192, 203)</td>
-    </tr>
-</table>
