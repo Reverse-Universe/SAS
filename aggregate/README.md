@@ -240,8 +240,8 @@ WHAT IF we want to get the result like this:
 
 
 <style>
-table th {
-         background-color: #FF0000;
+th {
+         background-color: red;
         /* sets table header cell background colour */
     }
 </style>
