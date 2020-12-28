@@ -238,8 +238,11 @@ WHAT IF we want to get the result like this:
 
 <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
 
+<style>
+</style>
+.th {background: red;}
 <table>
-<th bgcolor="Pink">Test</th>
+<th class="th">Test</th>
 </table>
 
 blue
