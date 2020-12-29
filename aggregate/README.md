@@ -31,6 +31,9 @@ In most cases, we want to know the total number of patients in different groups,
 |First-level hospital|<ul><li>community hospitals</li><li>community healthcare centers</li><li>rural healthcare clinics</li></ul>|
 |Second-level hospital|<ul><li>county or district hospitals</li></ul>|
 |Third-level hospital|<ul><li>topmost hospitals<ul><li>highly specialized staff</li><li>most-advanced equipment</li><li>well-funded</li><li>most are public hospitals</li></ul></li></ul>|
+|Non-level hospital|<ul><li>internal hospital<ul><li>university clinic</li><li>enterprise/factory clinic</li></ul></li><li>nursing home</li><li>hospice</li><li>sanatorium</li></ul>|
+
+*Notes: Actually, there are four levels.*
 
 One of the most conventional approach to count the number of patients from different groups（hospital level） is aggregating `number_of_visits` by different patients and different hospital level at the same time.
 
@@ -124,7 +127,7 @@ Here's the variable dictionary for the raw data:
 	+ Herbs Fee
 	+ Other Fee
 
-<sup>1. Hospital Level: Third-level, Second-level, First-level</sup>
+<sup>1. Hospital Level: Third-level, Second-level, First-level, Non-level</sup>
 
 <sup>2. the variables `community_hospital` specifies whether a hospital is a  community one. in most cases, the level of community hospitals is *FIRST*. 1 for community hospital and 0 for non-community hospital</sup>
 
@@ -151,9 +154,10 @@ Here's the variable dictionary for the raw data:
 
 <table>
 <tr><td></td><td></td><th>Number of Visits</th><th>Number of Patients</th><th>Total Expense</th></tr>
-<tr><th rowspan="3">hospital Level</th><td>Third-level</td><td></td><td></td><td></td></tr>
+<tr><th rowspan="4">hospital Level</th><td>Third-level</td><td></td><td></td><td></td></tr>
 <tr><td>Second-level</td><td></td><td></td><td></td></tr>
 <tr><td>First-level</td><td></td><td></td><td></td></tr>
+<tr><td>Non-level</td><td></td><td></td><td></td></tr>
 <tr><th rowspan="2">Community Hospital</th><td>Yes</td><td></td><td></td><td></td></tr>
 <tr><td>No</td><td></td><td></td><td></td></tr>
 </table>
@@ -212,31 +216,31 @@ WHAT IF we want to get the result like this:
 <tr><td></td><td></td><td></td><th colspan='8'>Outpaitent&Emergency</th><th colspan='8'>hospitalization(inpatient)&ICU</th><th>...</th></tr>
 <tr><td></td><td></td><td></td><th>Number of Visits</th><th>Number of Patients</th><th>Total Expense</th><th>Uncovered Charges</th><th>...</th><th>Registration Fee</th><th>Diagnosis Fee</th><th>...</th><th>Number of Visits</th><th>Number of Patients</th><th>Total Expense</th><th>Uncovered Charges</th><th>...</th><th>Registration Fee</th><th>Diagnosis Fee</th><th>...</th><th>...</th></tr>
 
-<tr><th rowspan='6'>Year 2010</th><th rowspan='3'>Hospital Level</th><th>Third-level</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><th rowspan='6'>Year 2010</th><th rowspan='4'>Hospital Level</th><th>Third-level</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
 <tr><th>Second-level</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
 <tr><th>First-level</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-<tr><th rowspan='3'>Community Hospital</th><th>Third-level</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-<tr><th>Second-level</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-<tr><th>First-level</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><th>Non-level</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><th rowspan='2'>Community Hospital</th><th>Yes = 1</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><th>No = 0</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
 
-<tr><th rowspan='6'>Year 2011</th><th rowspan='3'>Hospital Level</th><th>Third-level</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><th rowspan='6'>Year 2011</th><th rowspan='4'>Hospital Level</th><th>Third-level</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
 <tr><th>Second-level</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
 <tr><th>First-level</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-<tr><th rowspan='3'>Community Hospital</th><th>Third-level</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-<tr><th>Second-level</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-<tr><th>First-level</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><th>Non-level</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+
+<tr><th rowspan='2'>Community Hospital</th><th>Yes = 1</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><th>No = 0</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
 
 <tr><th>...</th><th>...</th><th>...</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
 
-<tr><th rowspan='6'>Year 2020</th><th rowspan='3'>Hospital Level</th><th>Third-level</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><th rowspan='6'>Year 2020</th><th rowspan='4'>Hospital Level</th><th>Third-level</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
 <tr><th>Second-level</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
 <tr><th>First-level</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-<tr><th rowspan='3'>Community Hospital</th><th>Third-level</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-<tr><th>Second-level</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-<tr><th>First-level</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-</table>
+<tr><th>Non-level</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
 
-<td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+<tr><th rowspan='2'>Community Hospital</th><th>Yes = 1</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><th>No = 0</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+
 
 Two more categorical variables are added to the output table: `YEAR` as the top row header, and `Type of Patients` as the top column header.
 
@@ -325,9 +329,9 @@ run;
 The structure of dataset `hos_level_num_patient.sas` and all the possible values for each variables.
 |year|type_of_patients|hos_level|number_of_patients|
 |----|----------------|---------|------------------|
-|2010,2011,...,2020|5 Types|Third, Second, First|  |
+|2010,2011,...,2020|5 Types|Third, Second, First, Non|  |
 
-Total number of rows: 11 × 5 × 3 = 165
+Total number of rows: 11 × 5 × 4 = 220
 
 The structure of dataset `com_num_patient.sas` and all the possible values for each variables.
 |year|type_of_patients|community_hos|number_of_patients|
@@ -337,7 +341,17 @@ The structure of dataset `com_num_patient.sas` and all the possible values for e
 *Notes: 1 for community hospital and 0 for non-community hospital*
 
 Total number of rows: 11 × 5 × 2 = 110
-
 ### MERGE into ONE
+As mentioned above, we could output the result table without `number_of_patients` directly under the help of PROC MEANS and PROC TABULATE procedures (we have output it as `result1.sas` above). However, the structures of result table `hos_level_num_patient` and `com_num_patient` are quite different from that. That means these three dataset cannot be merged directly.
+## The structure of result1.sas
+Simplification of `result1.sas`: hide the `year` and `type_of_patients` temporarily, this could help us understand the tricks for the problem.
+|hos_level|community_hos|number_of_visits|...|
+|---------|-------------|----------------|---|
+|Non-level|0|||
+|First-level|0|||
+|First-level|1|||
+|Second-level|0|||
+|Third-level|0|||
+
 
 
