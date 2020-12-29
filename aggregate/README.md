@@ -248,13 +248,14 @@ Two more categorical variables are added to the output table: `YEAR` as the top 
 + CriticalIllness
 + Pharmacy
 + InternalHospital
+
 *Notes: Hopitalization and ICU have been put in the same category because both include hospital bed, which Outpatient&Emergency doesn't contains.*
 
 ### Begin with a simple problem
 IF the `Number of Patients` are omitted, the problem will become much easier, and by that I mean, we will only need **PROC MEANS** and **PROC TABLULATE** procedures: 
 ```sas
 proc means data=raw_data nway noprint;
-	class year hos_level community_hos type_of_patient;
+	class year hos_level community_hos type_of_patients;
 	var number_of_visits
 		total_expense uncovered_charges <other money related variables>
 		registration_fee diagnosis_fee <other variables for expenses in different categories>;
@@ -262,12 +263,12 @@ proc means data=raw_data nway noprint;
 run;
 
 proc tabulate data=result1;
-	class year hos_level community_hos type_of_patient;
+	class year hos_level community_hos type_of_patients;
 	var number_of_visits
 		total_expense uncovered_charges <other money related variables>
 		registration_fee diagnosis_fee <other variables for expenses in different categories>;
 	/* the CLASS and VAR statement are just the same as that of PROC MEANS */
-	table year=''*(hos_level='' community_hos=''), type_of_patient=''*sum=''*f=20.0*(number_of_visits
+	table year=''*(hos_level='' community_hos=''), type_of_patients=''*sum=''*f=20.0*(number_of_visits
 		total_expense uncovered_charges <other money related variables>
 		registration_fee diagnosis_fee <other variables for expenses in different categories>) 
 		/ style={width=5000};
@@ -277,16 +278,15 @@ run;
 ### Add 'number_of_patients'
 Although the `number_of_visits` and `number_of_patients` cannot be aggregated at the same time (in the same **PROC MEANS** procedure), `year` and `type_of_patients` could be in the same CLASS statement.
 
-***KEY1***: The aggregation of `number_of_patients` is DANGEROUS and should be handled meticulously if the categorical variables are paralleled in the output table. A nested structure is more welcomed. For example, `hos_level` and `community_hos` are paralleled in the table, so the aggregation of `number_of_patients` should also be paralleled. The `year` and `community_hos` are not paralleled, in details, the `community_hos` is nested within the `year`, so we don't have to worry about the problem of one-patient-in-two-groups, in which one patient has been to the community hosital with first_level. 
+***KEY***: The aggregation of `number_of_patients` is DANGEROUS and should be handled meticulously if the categorical variables are paralleled in the output table. A nested structure is more welcomed. For example, `hos_level` and `community_hos` are paralleled in the table, so the aggregation of `number_of_patients` should also be paralleled. The `year` and `community_hos` are not paralleled, in details, the `community_hos` is nested within the `year`, so we don't have to worry about the problem of one-patient-in-two-groups, in which one patient has been to the community hosital with first_level. 
 
-***KEY2***: Different years' `number_of_patients` do not tangle with each other, that's what we hope.
+***TIP***: Different years' `number_of_patients` do not tangle with each other, that's what we hope.
 
-
-put `year type_of_patient` after the CLASS statement of the first PROC MEANS procedure.
+While aggregating the `number_of_patients` by different years and patients' types, just put 'year type_of_patients' after the CLASS statement in PROC MEANS procedures. Keep in mind that `number_of_patients` in different hospital levels and in communtiy hospitals should be counted separately. 
 ```sas
-/* aggregate the number of patients by hospital level of different year and type_of_patient */
+/* aggregate the number of patients by hospital level of different year and type_of_patients */
 proc means data=raw_data nway noprint;
-	class ID_number hos_level year type_of_patient;
+	class ID_number hos_level year type_of_patients;
 	var total_expense;
 	output out=id_hos_level sum=;
 run;
@@ -298,14 +298,14 @@ data id_hos_level;
 run;
 
 proc means data=id_hos_level nway noprint;
-	class hos_level;
+	class hos_level year type_of_patients;
 	var number_of_patients;
 	output out=hos_level_num_patient sum=;
 run;
 
-/* aggregate the number of patients by whether community hospital of different year and type_of_patient*/
+/* aggregate the number of patients by whether community hospital of different year and type_of_patients*/
 proc means data=raw_data nway noprint;
-	class ID_number community_hos year type_of_patient;
+	class ID_number community_hos year type_of_patients;
 	var total_expense;
 	output out=id_com_hos sum=;
 run;
@@ -317,8 +317,27 @@ data id_com_hos;
 run;
 
 proc means data=id_com_hos nway noprint;
-	class community_hos;
+	class community_hos year type_of_patients;
 	var number_of_patients;
 	output out=com_num_patient sum=;
 run;
 ```
+The structure of dataset `hos_level_num_patient.sas` and all the possible values for each variables.
+|year|type_of_patients|hos_level|number_of_patients|
+|----|----------------|---------|------------------|
+|2010,2011,...,2020|5 Types|Third, Second, First|  |
+
+Total number of rows: 11 × 5 × 3 = 165
+
+The structure of dataset `com_num_patient.sas` and all the possible values for each variables.
+|year|type_of_patients|community_hos|number_of_patients|
+|----|----------------|-------------|------------------|
+|2010,2011,..,2020|5 Types|0,1| |
+
+*Notes: 1 for community hospital and 0 for non-community hospital*
+
+Total number of rows: 11 × 5 × 2 = 110
+
+### MERGE into ONE
+
+
