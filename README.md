@@ -5,13 +5,11 @@ This repository is my notebook for tricks and tips that I summarize during work.
 Structured Data is Big, I use SAS.
 
 ## The advantages of SAS
-+ **Handling big structured data**
 
-&ensp;&ensp;If you read datasets of 10 years, 10 GB for each month, 1200 GB in total. The Python interpreter will immediately reports MemoryError:  `Unable to allocate array with shape (32768, ) and data type int64` for out-of-memory on the computer of *4GB* memory. Fortunately, This is not a problem for SAS, since SAS does not read data from disk to memory, all data is operated on the disk. This means that every **DATA** and **PROC** command in SAS performs both disk I/O reads and writes. **That is why SAS is more robust and scalable than other Data Analysis Tools like Python and R.**
+### Handling big structured data
+&ensp;&ensp;If you read datasets of 10 years, 10 GB for each month, 1200 GB in total. The Python interpreter will immediately reports MemoryError:  `Unable to allocate array with shape (32768, ) and data type int64` for out-of-memory on the computer of *4GB* memory. Fortunately, This is not a problem for SAS, since SAS does not read data from disk to memory, all data is operated on the disk. This means that every **DATA** and **PROC** command in SAS performs both disk I/O reads and writes. **That is why SAS is more robust and scalable than other Data Analysis Tools like Python and R.** Basic R and Python performs operations with everything in memory, whereas SAS doesn't necessarily. SAS is significantly more performant than pure R or Python
 
-
-+ **More flexible**
-
+### More flexible
 &ensp;&ensp;Undoubtedly, MySQL can also manage big structured data by using DQL (Data Query Language). However, the DATA STEP of SAS is more flexible than DQL in MySQL, and the syntax of DATA STEP is much easier to learn and understand. What's more, the PROC SQL, as a powerful procedure in SAS, is quite similar to DQL, so you don't have to learn SAS syntax, since the SAS supports SQL language well.
 
 Here are some examples to show the flexibility of SAS:
@@ -53,10 +51,18 @@ data test; set
 run;
 ```
 
-**FIRST. & LAST.**
+**FIRST. & LAST. in the BY Statement**
+The SAS's [official documentation](https://documentation.sas.com/?cdcId=vdmmlcdc&cdcVersion=8.11&docsetId=lestmtsref&docsetTarget=p0yeyftk8ftuckn1o5qzy53284gz.htm&locale=en) notes that:
+>SAS assgin the following values to FIRST.*variable* and LAST.*variable*:<br>
+&ensp;&ensp;**·** FIRST.*variable* has a value of 1 when the current observation is the first observation that is read from the dataset.<br>
+&ensp;&ensp;**·** LAST. *variable* has a value of 1 when the current observation is the last observation that is read from the dataset.
 
-+ **The solution at your finger tips**
+### More reliable
+SAS is quite popular among healthcare, finance enterprise and government, because if they make mistakes due to software bugs and it comes to lawsuits, SAS will recompensate them. However, R comes without warranty. Just consider the balance between risk and return. Changing to R may cut down costs on software, but enlarge the risk exposure.
+
+### The solution at your finger tips
 
 
-
-
+### Other merits of SAS
+1. [Why pick SAS for your analytics services](https://seleritysas.com/blog/2019/05/10/why-pick-sas-for-your-analytics-services/#:~:text=SAS%20is%20the%20best%20analytics,data%20in%20the%20same%20way.)
+2. [Top 8 Reasons to Learn SAS](https://www.jigsawacademy.com/top-8-reasons-to-learn-sas/)
