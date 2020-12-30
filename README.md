@@ -1,7 +1,7 @@
 ## Not Just SAS
 This repository is my notebook for tricks and tips that I summarize during work. Different from SAS Programming Guide and SAS official documentation, each note starts with a specific problem that I have met with. I will avoid making a list of the SYNTAX of every STATEMENT and ARGUMENT occurred in the SAS program. In order to make the explanation much more clear, I try to simplify the original problem and refine the key to that. The original intention for creating this notebook is helping reveiw not only the SAS techniques, but also the tricks for data analysis in general.
 
->Life is Short, I use Python. <img src="https://github.com/Reverse-Universe/SAS/blob/main/MarkdownPicture/python_logo.png" align="middle" width="20%" height="20%"><br><br>Dataset is Big, I use SAS. <img src="https://github.com/Reverse-Universe/SAS/blob/main/MarkdownPicture/sas_logo.png" align="middle" width="10%" height="10%">
+>Life is Short, I use Python.  <img src="https://github.com/Reverse-Universe/SAS/blob/main/MarkdownPicture/python_logo.png" align="middle" width="20%" height="20%"><br><br>Dataset is Big, I use SAS.  <img src="https://github.com/Reverse-Universe/SAS/blob/main/MarkdownPicture/sas_logo.png" align="middle" width="10%" height="10%">
 
 ## The advantages of SAS
 
@@ -90,9 +90,6 @@ Varialbe `b` has been divided into five groups (b=1 b=2 b=3 b=1 b=2) depending o
 
 ### More reliable
 SAS is quite popular among healthcare, finance enterprise and government, because if they make mistakes due to software bugs and it comes to lawsuits, SAS will recompensate them. However, R comes without warranty. Just consider the balance between risk and return. Changing to R may cut down costs on software, but enlarge the risk exposure.
-
-### The solution at your finger tips
-
 
 ### Other merits of SAS
 1. [Why pick SAS for your analytics services](https://seleritysas.com/blog/2019/05/10/why-pick-sas-for-your-analytics-services/#:~:text=SAS%20is%20the%20best%20analytics,data%20in%20the%20same%20way.)
