@@ -27,7 +27,7 @@ _Notes: IF the value of **SYSERR** is TRUE (>0), there exists warnings or errors
 It is worth mentioning that **SYSERR** automatic macro variable is reset at each step boundary, which means the value of SYSERR will be refreshed at the end of each STEP, so we have to assign the latest value to the global macro variable at the end of each STEP.
 
 ## TASK and SOLUTION
-The size of raw data in the library is listed as following:
+The size of raw data in the library (named `lib`) is listed as following:
 
 |Name of SAS file|Estimated Size|
 |-----------------------------|--------------|
@@ -68,7 +68,7 @@ proc means data=overall nway noprint;
     output out=result sum=;
 run;
 ```
-Unfortunately, the remaining disk space is not enough for SAS to create dataset `overall`, since this DATA Step would try to merge all the data into a two one at once. Finally, the SAS pops out a window, warning that the disk is **OUT OF RESOURCE**.
+Unfortunately, the remaining disk space is not enough for SAS to create dataset `overall`, since this DATA Step would try to merge all the data into one at once. Finally, the SAS pops out a window, warning that the disk is **OUT OF RESOURCE**.
 
 **Solution:** Read one year's data each time, aggregate it before reading next year's data. DON'T FORGET to add a new variable called `year` after aggregation, otherwise we can not tell the difference between data of different year. **DELETE raw data in the Work library after aggregated into new dataset.**
 ```sas
@@ -91,7 +91,7 @@ data result2010;
     year = 2010;
 run;
 
-/* Now the raw datay 'y2010' are redundant, we don't need it anymore, delete it from the disk to save diskspace */
+/* Now the raw data 'y2010' is redundant, we don't need it anymore, delete it from the disk to save diskspace */
 
 proc datasets lib=work;
     delete y2010;
@@ -110,13 +110,13 @@ run;
 **CAUTION**: DON'T DELETE the dataset in `lib`, where we store the raw data. Delete `work.y2010`, not `lib.year2010`.
 
 ### Problem
-If there are some syntax errors among the SAS code. For example, we run the overall program (from year 2010 to 2020), and hope all that works. However, the **PROC MEANS** procedure on dataset `y2015.sas` may have some errors, the dataset `result2015.sas` will not be created, the SAS still delete the raw data `y2015.sas` because the SAS will not stop upon the fiest warning or error, except that you turn on the system option `ERRORABEND`:
+If there are some syntax errors among the SAS code. For example, we run the overall program (from year 2010 to 2020), and hope that all that works. However, the **PROC MEANS** procedure on dataset `y2015.sas` may have some errors, the dataset `result2015.sas` will not be created, but the SAS still delete the raw data `y2015.sas` because the SAS will not stop upon the first warning or error, except that you turn on the system option `ERRORABEND`:
 ```sas
 OPTIONS ERRORABEND;
 ```
 >Use the ERRORABEND system option with SAS production programs, which presumably should not encounter any errors. If errors are encountered and ERRORABEND is in effect, SAS brings the errors to your attention immediately by terminating. ERRORABEND does not affect how SAS handles notes such as invalid data messages.
 
-You click on the run botton, and check the result on the next morning, finding out that *PROC MEANS** procedure on dataset `y2015.sas` reports an error, with the `y2015.sas` having been deleted. Had it not been deleted, we could save a lot time, because the PROC MEANS procedure calculating on `y2015.sas` only takes about 30 minutes. However, the DATA step may cost you several hours (due to the limitation on disk I/O speed).
+You click on the run button, and check the result on the next morning, finding out that **PROC MEANS** procedure on dataset `y2015.sas` reports an error, with the `y2015.sas` having been deleted. Had it not been deleted, we could save a lot time, because the PROC MEANS procedure calculating on `y2015.sas` only takes about 30 minutes. However, the DATA step may cost you several hours (due to the limitation on disk I/O speed). Given that we want to fix the error and run the program (only the part for year 2015) again.
 <table>
 <tr><th>DATA & PROC Step</th><th>Time Consumed(Estimated)</th></tr>
 <tr>
@@ -147,7 +147,7 @@ run;
 </tr>
 </table>
 
-**Solution:** So we have to avoid deleting critical dataset if there exsit errors on the DATA STEP of PROCEDURE above. The action of deleting dataset is so DANGEROUS that we should pay more attention to it.
+**Solution:** So we have to avoid deleting critical dataset if there exsit errors on the DATA STEP of PROCEDURE above. The action of deleting dataset is so DANGEROUS that we should pay more attention to it and handle it carefully.
 
 As mentioned above, **SYSERR** automatic macro variable is reset at each step boundary. It is suggested to create a **global macro variables** at the beginning of the program:
 ```sas
@@ -169,11 +169,11 @@ Remeber to call this function after after each DATA STEP or PROC STEP(procedure)
 <DATA STEP>
  %check_for_errors;
 
-<PROCEDURE>
+<PROC STEP>
  %check_for_errors;
 ```
 
-DANGEROUS actions are triggered by the value of global macro variable `error_list`.
+DANGEROUS actions are triggered by the value of global macro variable `error_exist`.
 ```sas
 /*DANGEROUS ACTION!!! CHECK error_exist first*/
 %macro func;
