@@ -421,10 +421,12 @@ proc tabulate data=result3;
 run;
 ```
 
-We have to merge `num_of_pati_hoslel` and `num_of_pati_comhos` to one variable according to the meaning of each variable in the final table, delete the ones that are invalid and meaningless.
+We have to merge `num_of_pati_hoslel` and `num_of_pati_comhos` into one variable according to the meaning of each variable in the final table, delete the ones that are invalid and meaningless.
 
 Before:
+
 ||num_of_pati_hoslel|num_of_pati_comhos|
+|-|-----------------|------------------|
 |Third-level|1|(DELETED)|
 |Second-level|2|(DELETED)|
 |First-level|3|(DELETED)|
@@ -433,10 +435,12 @@ Before:
 |Not Community Hospital|(DELETED)|6|
 
 After:
+
 ||number_of_patients|
+|-|-----------------|
 |Third-level|1|
 |Second-level|2|
 |First-level|3|
 |Non-level|4|
-|Community Hospital||5|
-|Not Community Hospital||6|
+|Community Hospital|5|
+|Not Community Hospital|6|
