@@ -57,6 +57,8 @@ The SAS's [official documentation](https://documentation.sas.com/?cdcId=vdmmlcdc
 &ensp;&ensp;**·** FIRST.*variable* has a value of 1 when the current observation is the first observation that is read from the dataset.<br>
 &ensp;&ensp;**·** LAST. *variable* has a value of 1 when the current observation is the last observation that is read from the dataset.
 
+![How FIRST. and LAST. works](https://github.com/Reverse-Universe/SAS/blob/main/MarkdownPicture/FIRST%26LAST.png)
+
 ### More reliable
 SAS is quite popular among healthcare, finance enterprise and government, because if they make mistakes due to software bugs and it comes to lawsuits, SAS will recompensate them. However, R comes without warranty. Just consider the balance between risk and return. Changing to R may cut down costs on software, but enlarge the risk exposure.
 
