@@ -83,9 +83,9 @@ There are five BY groups in the dataset above:
 4. a=2 b=1;
 5. a=2 b=2.
 
-Variable `a` has been divided into two groups (a=1 and a=2). The value of FIRST.a and LAST.a are used to mark the head and tail of each group.
+Variable `a` has been divided into two groups (a=1 and a=2). The value of `FIRST.a` and `LAST.a` are used to mark the head and tail of each group.
 
-Varialbe `b` has been divided into five groups (b=1 b=2 b=3 b=1 b=2) depending on the value of `a` (because `b` is behind `a` in the BY Statement). The value of FIRST.b and LAST.b are used to mark the head and tail of each group.
+Varialbe `b` has been divided into five groups (b=1 b=2 b=3 b=1 b=2) depending on the value of `a` (because `b` is behind `a` in the BY Statement). The value of `FIRST.b` and `LAST.b` are used to mark the head and tail of each group.
 
 
 ### More reliable
