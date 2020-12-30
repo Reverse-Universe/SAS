@@ -1,8 +1,8 @@
 ## Not Just SAS
 This repository is my notebook for tricks and tips that I summarize during work. Different from SAS Programming Guide and SAS official documentation, each note starts with a specific problem that I have met with. I will avoid making a list of the SYNTAX of every STATEMENT and ARGUMENT occurred in the SAS program. In order to make the explanation much more clear, I try to simplify the original problem and refine the key to that. The original intention for creating this notebook is helping reveiw not only the SAS techniques, but also the tricks for data analysis in general.
 
->Life is Short, I use Python.<br>
-Structured Data is Big, I use SAS.
+>Life is Short, I use Python. <img src="https://github.com/Reverse-Universe/SAS/blob/main/MarkdownPicture/python_logo.png" width="100%" height="100%"><br>
+Structured Data is Big, I use SAS. <img src="https://github.com/Reverse-Universe/SAS/blob/main/MarkdownPicture/sas_logo.png" width="100%" height="100%">
 
 ## The advantages of SAS
 
@@ -57,9 +57,37 @@ The SAS's [official documentation](https://documentation.sas.com/?cdcId=vdmmlcdc
 &ensp;&ensp;**·** FIRST.*variable* has a value of 1 when the current observation is the first observation that is read from the dataset.<br>
 &ensp;&ensp;**·** LAST. *variable* has a value of 1 when the current observation is the last observation that is read from the dataset.
 
-![How FIRST. and LAST. works](https://github.com/Reverse-Universe/SAS/blob/main/MarkdownPicture/FIRST%26LAST.png)
+>SAS identifies the beginning and end of a BY group by creating two temporary variables for each BY variable: FIRST.variable and LAST.variable. The value of these variables is either 0 or 1. SAS sets the value of FIRST. variable to 1 when it reads the first observation in a BY group, and set the values of LAST.variable to 1 when it reads the last observation in a BY group. These temporary variables are available for DATA step programming but are not added to the output data set.
+
+DO NOT FORGET to sort the dataset first, and the variables in the BY Statement should keep the same as that in the PROC SORT procedure.
+```sas
+proc sort data=dataset; by a b; run;
+
+data dataset;
+    set dataset;
+    by a b;
+    first_a = first.a;
+    last_a = last.a;
+    first_b = first.b;
+    last_b = last.b;
+run;
+```
+
+The mechanism of **FIRST.** and **LAST.**
 
 <img src="https://github.com/Reverse-Universe/SAS/blob/main/MarkdownPicture/FIRST%26LAST.png" width="50%" height="50%">
+
+There are five BY groups in the dataset above:
+1. a=1 b=1;
+2. a=1 b=2;
+3. a=1 b=3;
+4. a=2 b=1;
+5. a=2 b=2.
+
+Variable `a` has been divided into two groups (a=1 and a=2). The value of FIRST.a and LAST.a are used to mark the head and tail of each group.
+
+Varialbe `b` has been divided into five groups (b=1 b=2 b=3 b=1 b=2) depending on the value of `a` (because `b` is behind `a` in the BY Statement). The value of FIRST.b and LAST.b are used to mark the head and tail of each group.
+
 
 ### More reliable
 SAS is quite popular among healthcare, finance enterprise and government, because if they make mistakes due to software bugs and it comes to lawsuits, SAS will recompensate them. However, R comes without warranty. Just consider the balance between risk and return. Changing to R may cut down costs on software, but enlarge the risk exposure.
