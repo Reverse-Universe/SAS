@@ -110,26 +110,77 @@ run;
 **CAUTION**: DON'T DELETE the dataset in `lib`, where we store the raw data. Delete `work.y2010`, not `lib.year2010`.
 
 ### Problem
-If there are some syntax errors among the SAS code. For example, we run the overall program (from year 2010 to 2020), and hope all that works. However, the **PROC MEANS** procedure on dataset `y2015` may have some errors, the dataset `result2015` may not be created, however, the SAS still delete the raw data `y2015` because the SAS 
+If there are some syntax errors among the SAS code. For example, we run the overall program (from year 2010 to 2020), and hope all that works. However, the **PROC MEANS** procedure on dataset `y2015.sas` may have some errors, the dataset `result2015.sas` will not be created, the SAS still delete the raw data `y2015.sas` because the SAS will not stop upon the fiest warning or error, except that you turn on the system option `ERRORABEND`:
+```sas
+OPTIONS ERRORABEND;
+```
+>Use the ERRORABEND system option with SAS production programs, which presumably should not encounter any errors. If errors are encountered and ERRORABEND is in effect, SAS brings the errors to your attention immediately by terminating. ERRORABEND does not affect how SAS handles notes such as invalid data messages.
 
+You click on the run botton, and check the result on the next morning, finding out that *PROC MEANS** procedure on dataset `y2015.sas` reports an error, with the `y2015.sas` having been deleted. Had it not been deleted, we could save a lot time, because the PROC MEANS procedure calculating on `y2015.sas` only takes about 30 minutes. However, the DATA step may cost you several hours (due to the limitation on disk I/O speed).
+<table>
+<tr><th>DATA & PROC Step</th><th>Time Consumed(Estimated)</th></tr>
+<tr>
+<td>
 
+```sas
+data y2015; set
+    lib.year2015;
+    <WHERE Statement>;
+    <IF Statement>;
+run;
+```
+
+</td><td>10 hours</td>
+</tr>
+<tr>
+<td>
+
+```sas
+proc means data=y2015 nway noprint;
+    class <all categorical variables>;
+    var <all numeric variables>;
+    output out=result2015 sum=;
+run;
+```
+
+</td><td>30 mins</td>
+</tr>
+</table>
+
+**Solution:** So we have to avoid deleting critical dataset if there exsit errors on the DATA STEP of PROCEDURE above. The action of deleting dataset is so DANGEROUS that we should pay more attention to it.
+
+As mentioned above, **SYSERR** automatic macro variable is reset at each step boundary. It is suggested to create a **global macro variables** at the beginning of the program:
+```sas
 %let error_exist = 0;
+```
 
+Then create a macro functions. The value of error_exist would be turned to TRUE (larger than 0) as soon as the SAS log reports an error.
+```sas
 %macro check_for_errors;
     %global error_exist;
     %if &syserr > 0 %then %do;
         %let error_exist = 1;
     %end;
 %mend check_for_errors;
+```
 
-after each DATA STEP or PROC: %check_for_errors;
+Remeber to call this function after after each DATA STEP or PROC STEP(procedure):
+```sas
+<DATA STEP>
+ %check_for_errors;
 
+<PROCEDURE>
+ %check_for_errors;
+```
+
+DANGEROUS actions are triggered by the value of global macro variable `error_list`.
+```sas
 /*DANGEROUS ACTION!!! CHECK error_exist first*/
 %macro func;
     %if &error_exist = 0 %then %do;
-    proc datasets lib=work; delete y2010; run;
-%end;
+        proc datasets lib=work; delete y2010; run;
+    %end;
 %mend func;
 %func; 
-
+```
 
