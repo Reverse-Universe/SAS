@@ -31,11 +31,11 @@ The size of raw data in the library (named `lib`) is listed as following:
 
 |Name of SAS file|Estimated Size|
 |-----------------------------|--------------|
-|Year2010.sas|100 GB|
-|Year2011.sas|150 GB|
-|Year2012.sas|200 GB|
+|Year2010.sas7bdat|100 GB|
+|Year2011.sas7bdat|150 GB|
+|Year2012.sas7bdat|200 GB|
 |...|Δsize = 50 GB for each year|
-|Year2020.sas|600 GB|
+|Year2020.sas7bdat|600 GB|
 
 _**Notes:**_
 
@@ -78,7 +78,7 @@ data y2010; set
     <IF Statement>;
 run;
 
-<Other operation on y2010.sas, like inner join>
+<Other operation on y2010.sas7bdat, like inner join>
 
 proc means data=y2010 nway noprint;
     class <all categorical variables>;
@@ -110,13 +110,13 @@ run;
 **CAUTION**: DON'T DELETE the dataset in `lib`, where we store the raw data. Delete `work.y2010`, not `lib.year2010`.
 
 ### Problem
-If there are some syntax errors among the SAS code. For example, we run the overall program (from year 2010 to 2020), and hope that all that works. However, the **PROC MEANS** procedure on dataset `y2015.sas` may have some errors, the dataset `result2015.sas` will not be created, but the SAS still delete the raw data `y2015.sas` because the SAS will not stop upon the first warning or error, except that you turn on the system option `ERRORABEND`:
+If there are some syntax errors among the SAS code. For example, we run the overall program (from year 2010 to 2020), and hope that all that works. However, the **PROC MEANS** procedure on dataset `y2015.sas7bdat` may have some errors, the dataset `result2015.sas7bdat` will not be created, but the SAS still delete the raw data `y2015.sas7bdat` because the SAS will not stop upon the first warning or error, except that you turn on the system option `ERRORABEND`:
 ```sas
 OPTIONS ERRORABEND;
 ```
 >Use the ERRORABEND system option with SAS production programs, which presumably should not encounter any errors. If errors are encountered and ERRORABEND is in effect, SAS brings the errors to your attention immediately by terminating. ERRORABEND does not affect how SAS handles notes such as invalid data messages.
 
-You click on the run button, and check the result on the next morning, finding out that **PROC MEANS** procedure on dataset `y2015.sas` reports an error, with the `y2015.sas` having been deleted. Had it not been deleted, we could save a lot time, because the PROC MEANS procedure calculating on `y2015.sas` only takes about 30 minutes. However, the DATA step may cost you several hours (due to the limitation on disk I/O speed). Given that we want to fix the error and run the program (only the part for year 2015) again.
+You click on the run button, and check the result on the next morning, finding out that **PROC MEANS** procedure on dataset `y2015.sas7bdat` reports an error, with the `y2015.sas7bdat` having been deleted. Had it not been deleted, we could save a lot time, because the PROC MEANS procedure calculating on `y2015.sas7bdat` only takes about 30 minutes. However, the DATA step may cost you several hours (due to the limitation on disk I/O speed). Given that we want to fix the error and run the program (only the part for year 2015) again.
 <table>
 <tr><th>DATA & PROC Step</th><th>Time Consumed(Estimated)</th></tr>
 <tr>

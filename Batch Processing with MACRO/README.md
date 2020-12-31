@@ -4,9 +4,9 @@
 Raw data are stored on the server as SAS files. Each file hold the records of a whole month, and the data of different types of patients are stored separately. The reason for storing the raw data by month is that, for example, the data of outpatient and emergency bills may eat up hardware capacity of about 3-5 GBs every month. The table below shows how data becoming larger and larger over time.
 |YearMonth|SAS file|number of rows|number of columns|Size|
 |---------|--------|--------------|-----------------|----|
-|2003/01|OutpatientEmergency0301.sas|10000000+ rows|20+ columns|1.8 GB|
-|2009/12|OutpatientEmergency0912.sas|20000000+ rows|20+ columns|3.6 GB|
-|2019/12|OutpatientEmergency1912.sas|40000000+ rows|20+ columns|4.2 GB|
+|2003/01|OutpatientEmergency0301.sas7bdat|10000000+ rows|20+ columns|1.8 GB|
+|2009/12|OutpatientEmergency0912.sas7bdat|20000000+ rows|20+ columns|3.6 GB|
+|2019/12|OutpatientEmergency1912.sas7bdat|40000000+ rows|20+ columns|4.2 GB|
 
 *Notes:not include index files*
 
@@ -17,8 +17,8 @@ Raw data are stored on the server as SAS files. Each file hold the records of a 
 The name of each sas file contains the year and month of the data, in the format of `4-length digital`: '2001' is for 'Januray,2020'.
 |Directory|Year and Month|SAS files|
 |---------|--------------|---------|
-|D:\data\201001\\ |Jan2010|<ul><li>OutpatientEmergency1001.sas</li><li>Hospitalization1001.sas</li><li>ICU1001.sas</li><li>CriticalIllness1001.sas</li><li>Pharmacy1001.sas</li><li>InternalHos1001.sas</li></ul>|
-|D:\data\202012\\ |Dec2020|<ul><li>OutpatientEmergency2012.sas</li><li>Hospitalization2012.sas</li><li>ICU2012.sas</li><li>CriticalIllness2012.sas</li><li>Pharmacy2012.sas</li><li>InternalHos2012.sas</li></ul>|
+|D:\data\201001\\ |Jan2010|<ul><li>OutpatientEmergency1001.sas7bdat</li><li>Hospitalization1001.sas7bdat</li><li>ICU1001.sas7bdat</li><li>CriticalIllness1001.sas7bdat</li><li>Pharmacy1001.sas7bdat</li><li>InternalHos1001.sas7bdat</li></ul>|
+|D:\data\202012\\ |Dec2020|<ul><li>OutpatientEmergency2012.sas7bdat</li><li>Hospitalization2012.sas7bdat</li><li>ICU2012.sas7bdat</li><li>CriticalIllness2012.sas7bdat</li><li>Pharmacy2012.sas7bdat</li><li>InternalHos2012.sas7bdat</li></ul>|
 
 ## Primitive code without MACRO
 **Target:** Reading the data from Jan2010 to Dec2020.
@@ -62,7 +62,7 @@ run;
 ```
 
 ## Tricks to write more concise code in SAS
-Here is an [example](https://documentation.sas.com/?cdcId=pgmsascdc&cdcVersion=9.4_3.5&docsetId=mcrolref&docsetTarget=n01vuhy8h909xgn16p0x6rddpoj9.htm&locale=en) from *SAS® 9.4 and SAS® Viya® 3.5 Programming Documentation*. 
+Here is an [example](https://documentation.sas7bdat.com/?cdcId=pgmsascdc&cdcVersion=9.4_3.5&docsetId=mcrolref&docsetTarget=n01vuhy8h909xgn16p0x6rddpoj9.htm&locale=en) from *SAS® 9.4 and SAS® Viya® 3.5 Programming Documentation*. 
 
 ```sas
 %macro date_loop(start,end);
@@ -182,7 +182,7 @@ Create the `%YYMM_loop(start, end)` MACRO function to loop through months in the
 ```
 
 ## More Details
-For more information about the **Date, Time and Datetime formats**, See [this page](https://documentation.sas.com/?cdcId=vdmmlcdc&cdcVersion=8.1&docsetId=ds2pg&docsetTarget=p0bz5detpfj01qn1kz2in7xymkdl.htm&locale=en) on *SAS® Visual Data Mining and Machine Learning 8.1*.
+For more information about the **Date, Time and Datetime formats**, See [this page](https://documentation.sas7bdat.com/?cdcId=vdmmlcdc&cdcVersion=8.1&docsetId=ds2pg&docsetTarget=p0bz5detpfj01qn1kz2in7xymkdl.htm&locale=en) on *SAS® Visual Data Mining and Machine Learning 8.1*.
 
 Some of the most commonly used formats are listed below:
 |Type of Language Element|Language Element|Input|Result|

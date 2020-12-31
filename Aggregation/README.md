@@ -88,7 +88,7 @@ run;
 ```
 
 ## Count the number of patients separately
-Each row of the `raw_data.sas` repesents one bill, which indicates how the total amount of expense being decomposited into smaller ones, and how much money insurer and insured should pay towards this bill.
+Each row of the `raw_data.sas7bdat` repesents one bill, which indicates how the total amount of expense being decomposited into smaller ones, and how much money insurer and insured should pay towards this bill.
 
 Here's the variable dictionary for the raw data:
 + **Basic variables**
@@ -326,14 +326,14 @@ proc means data=id_com_hos nway noprint;
 	output out=com_num_patient sum=;
 run;
 ```
-The structure of dataset `hos_level_num_patient.sas` and all the possible values for each variables.
+The structure of dataset `hos_level_num_patient.sas7bdat` and all the possible values for each variables.
 |year|type_of_patients|hos_level|number_of_patients|
 |----|----------------|---------|------------------|
 |2010,2011,...,2020|5 Types|Third, Second, First, Non|  |
 
 Total number of rows: 11 × 5 × 4 = 220
 
-The structure of dataset `com_num_patient.sas` and all the possible values for each variables.
+The structure of dataset `com_num_patient.sas7bdat` and all the possible values for each variables.
 |year|type_of_patients|community_hos|number_of_patients|
 |----|----------------|-------------|------------------|
 |2010,2011,..,2020|5 Types|0,1| |
@@ -342,9 +342,9 @@ The structure of dataset `com_num_patient.sas` and all the possible values for e
 
 Total number of rows: 11 × 5 × 2 = 110
 ## MERGE into ONE
-As mentioned above, we could output the result table without `number_of_patients` directly under the help of **PROC MEANS** and **PROC TABULATE** procedures (we have output it as `result1.sas` above). However, the structures of result table `hos_level_num_patient.sas` and `com_num_patient.sas` are quite different from that. That means these three dataset cannot be merged directly.
-### The structure of result1.sas
-**Simplification of `result1.sas`**: hide the `year` and `type_of_patients` temporarily, this could help us understand the tricks for the problem. The table below is part of a specific *year - type_of_patients* combination.
+As mentioned above, we could output the result table without `number_of_patients` directly under the help of **PROC MEANS** and **PROC TABULATE** procedures (we have output it as `result1.sas7bdat` above). However, the structures of result table `hos_level_num_patient.sas7bdat` and `com_num_patient.sas7bdat` are quite different from that. That means these three dataset cannot be merged directly.
+### The structure of result1.sas7bdat
+**Simplification of `result1.sas7bdat`**: hide the `year` and `type_of_patients` temporarily, this could help us understand the tricks for the problem. The table below is part of a specific *year - type_of_patients* combination.
 |hos_level|community_hos|number_of_visits|...|
 |---------|-------------|----------------|---|
 |Non-level|0|||
@@ -358,14 +358,14 @@ As mentioned above, we could output the result table without `number_of_patients
 *Notes: Several hospitals may be expections and do not obey this rule, we suggest deleting the rows of these hospitals manually.*
 
 ### TWO for ONE
-We don't want to enlarge the `result1.sas` with the `number_of_patients` in `hos_level_num_patient.sas` and `com_num_patient.sas` manually because their structure is quite different and it does cost much time. But things will be better if we could merge these three datasets together, and finally output the table by using the **PROC TABULATE** procedure.
+We don't want to enlarge the `result1.sas7bdat` with the `number_of_patients` in `hos_level_num_patient.sas7bdat` and `com_num_patient.sas7bdat` manually because their structure is quite different and it does cost much time. But things will be better if we could merge these three datasets together, and finally output the table by using the **PROC TABULATE** procedure.
 
 Here is the trick to merge them together:
 
 
 **STEP1: Check the variales shared by three datasets.**
 
-`result1.sas`: **year type_of_patients** hos_level community_hos *other numeric variables*
+`result1.sas7bdat`: **year type_of_patients** hos_level community_hos *other numeric variables*
 
 `hos_level_num_patient`: **year type_of_patient** hos_level number_of_patients
 
@@ -388,7 +388,7 @@ run;
 
 **STEP3: merge `result1` and `hos_level_num_patient` by `year`, `type_of_patient` and `hos_level`.**
 
-**CAUTION:** The `num_of_pati_hoslel` should be divided by **2**, since there are **two** rows of `hos_level` with *First-level* in the simplified `result1.sas`. If we don't do that, the `num_of_pati_holel` in the final table after **PROC TABULATE** may be wrong (doubled).
+**CAUTION:** The `num_of_pati_hoslel` should be divided by **2**, since there are **two** rows of `hos_level` with *First-level* in the simplified `result1.sas7bdat`. If we don't do that, the `num_of_pati_holel` in the final table after **PROC TABULATE** may be wrong (doubled).
 
 ```sas
 %merge(result1, hos_level_num_patient, year type_of_patient hos_level, left, result2)
@@ -398,7 +398,7 @@ run;
 
 **STEP4: merge `result2` and `com_num_patient` by `year`, `type_of_patient` and `hos_level`.**
 
-**CAUTION:** The `num_of_pati_comhos` should be divided by **4**, since there are **four** rows of `community_hos` with *0* in the simplified `result1.sas`. If we don't do that, the `num_of_pati_comhos` in the final table after **PROC TABULATE** may be wrong (4 times as origin).
+**CAUTION:** The `num_of_pati_comhos` should be divided by **4**, since there are **four** rows of `community_hos` with *0* in the simplified `result1.sas7bdat`. If we don't do that, the `num_of_pati_comhos` in the final table after **PROC TABULATE** may be wrong (4 times as origin).
 
 ```sas
 %merge(result2, com_num_patient, year type_of_patient community_hos, left, result3)
