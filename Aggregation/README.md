@@ -444,3 +444,14 @@ After:
 |Non-level|4|
 |Community Hospital|5|
 |Not Community Hospital|6|
+
+**TINT**: Use MOD() function to get the value of  `num_of_pati_hoslel` and `num_of_pati_comhos` from each 4 / 2 rows.
+```sas
+data final_table;
+	set final_table;
+	count + 1;   /* Create an enumeration variable */
+	remainder = mod(count, 6);
+	if remainder in (1, 2, 3, 4) then number_of_patients = num_of_pati_hoslel;
+	else if remainder in (5, 0) then number_of_patients = num_of_pati_comhos;
+run;
+```
