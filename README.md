@@ -87,6 +87,57 @@ Variable `a` has been divided into two groups (a=1 and a=2). The value of `FIRST
 
 Varialbe `b` has been divided into five groups (b=1 b=2 b=3 b=1 b=2) depending on the value of `a` (because `b` is behind `a` in the BY Statement). The value of `FIRST.b` and `LAST.b` are used to mark the head and tail of each group.
 
+The following table is the vidence showing that the value of `FIRST.b` and `LAST.b` are dependent on the value of `a`
+
+<img src="https://github.com/Reverse-Universe/SAS/blob/main/MarkdownPicture/FIRST%26LAST2.png" width="50%" height="50%">
+
+We can take full advantage of FIRST.*variable* and LAST.*variable* to identify duplicate values in the dataset:
+<table>
+<tr><td></td><td></td><th colspan="2">one variable: a</th><th colspan="2">two variables: a and b</th><th rowspan="2">Notes</th></tr>
+<tr><td></td><td></td><th nowrap>value of FIRST.variable and LAST.variable</th><th nowrap>SAS code</th><th nowrap>value of FIRST.variable and LAST.variable</th><th nowrap>SAS code</th></tr>
+<tr><th rowspan="3">drop duplicates</th><th>drop duplicates except for the first occurence</th>
+<td>(FIRST.a, LAST.a) = (1,0) or (1,1)</td>
+<td nowrap>if FIRST.a then output;</td>
+<td>(FIRST.a, LAST.a, FIRST.b, LAST.b) =(1,0,1,0) or (1,0,1,1) or (1,1,1,1)</td>
+<td nowrap>if FIRST.a then output;</td>
+<td nowrap>We only want to output rows with FIRST.a = 1.<br>
+If (FIRST.a, LAST.a) = (1,0), then (FIRST.b, LAST.b) must be (1,0) or (1,1);<br>
+If (FIRST.a, LAST.a) = (1,1), then (FIRST.b, LAST.b) must be (1,1);</td>
+</tr>
+<tr><th>drop duplicates except for the last occurence</th>
+<td>(FIRST.a, LAST.a) = (0,1) or (1,1)</td>
+<td nowrap>if LAST.a then output;</td>
+<td>(FIRST.b, LAST.b)=(0,1)</td>
+<td nowrap>if (not FIRST.b) and LAST.b then output;</td>
+<td></td>
+</tr>
+<tr><th>drop all duplicates</th>
+<td>if have 0 then delete</td>
+<td nowrap>if (not FIRST.a) or (not LAST.a) then delete;</td>
+<td>if FIRST.b or LAST.b have 0 then delete</td>
+<td nowrap>if (not FIRST.b) or (not LAST.b) then delete;</td>
+<td></td>
+</tr>
+<tr><th rowspan="2">return duplicates</th>s<th>return all duplicate</th>
+<td>if have 0 then output</td>
+<td nowrap>if (not FIRST.a) or (not LAST.a) then output;</td>
+<td>if FIRST.b or LAST.b have 0 then output</td>
+<td nowrap>if (not FIRST.b) or (not LAST.b) then output;</td>
+<td></td>
+</tr>
+<tr><th>select unique values from duplicates</th>
+<td>(FIRST.a, LAST.a) = (1,0)</td>
+<td nowrap>if FIRST.a and (not LAST.a)</td>
+<td>only keeps (FIRST.b, LAST.b)=(1,0)</td>
+<td nowrap>if FIRST.b and (not LAST.b) then output;</td>
+<td></td>
+</tr>
+</table>
+
+**Notes:**
+
+The `keep` parameter of `pandas.DataFrame.drop_duplicates` may help you better understand the table above. For more details, see the [official documentation](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.drop_duplicates.html). 
+
 
 ### More reliable
 SAS is quite popular among healthcare, finance enterprise and government, because if they make mistakes due to software bugs and it comes to lawsuits, SAS will recompensate them. However, R comes without warranty. Just consider the balance between risk and return. Changing to R may cut down costs on software, but enlarge the risk exposure.
