@@ -94,8 +94,8 @@ The following table is the evidence showing that the value of `FIRST.b` and `LAS
 We can take full advantage of FIRST.*variable* and LAST.*variable* to identify duplicate values in the dataset:
 
 <table>
-<tr><td></td><td></td><th colspan="2">one variable: a</th><th colspan="2">two variables: a and b</th><th rowspan="2">Notes</th></tr>
-<tr><td></td><td></td><th nowrap>value of FIRST.variable and LAST.variable</th><th nowrap>SAS code</th><th nowrap>value of FIRST.variable and LAST.variable</th><th nowrap>SAS code</th></tr>
+<tr><td></td><td></td><th colspan="2">one variable: a</th><th colspan="2">two variables: a and b</th><th></th></tr>
+<tr><td></td><td></td><th nowrap>value of FIRST.variable and LAST.variable</th><th nowrap>SAS code</th><th nowrap>value of FIRST.variable and LAST.variable</th><th nowrap>SAS code</th><th>Notes</th></tr>
 <tr><th rowspan="3">drop duplicates</th><th>drop duplicates except for the first occurence</th>
 <td>(FIRST.a, LAST.a) = (1,0) or (1,1)</td>
 <td nowrap>if FIRST.a then output;</td>
@@ -119,7 +119,7 @@ If (FIRST.a, LAST.a) = (1,1), then (FIRST.b, LAST.b) must be (1,1);</td>
 <td nowrap>if (not FIRST.b) or (not LAST.b) then delete;</td>
 <td></td>
 </tr>
-<tr><th rowspan="2">return duplicates</th>s<th>return all duplicate</th>
+<tr><th rowspan="2">return duplicates</th><th>return all duplicate</th>
 <td>if have 0 then output</td>
 <td nowrap>if (not FIRST.a) or (not LAST.a) then output;</td>
 <td>if FIRST.b or LAST.b have 0 then output</td>
