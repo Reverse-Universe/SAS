@@ -87,11 +87,12 @@ Variable `a` has been divided into two groups (a=1 and a=2). The value of `FIRST
 
 Varialbe `b` has been divided into five groups (b=1 b=2 b=3 b=1 b=2) depending on the value of `a` (because `b` is behind `a` in the BY Statement). The value of `FIRST.b` and `LAST.b` are used to mark the head and tail of each group.
 
-The following table is the vidence showing that the value of `FIRST.b` and `LAST.b` are dependent on the value of `a`
+The following table is the evidence showing that the value of `FIRST.b` and `LAST.b` are dependent on the value of `a`.
 
 <img src="https://github.com/Reverse-Universe/SAS/blob/main/MarkdownPicture/FIRST%26LAST2.png" width="50%" height="50%">
 
 We can take full advantage of FIRST.*variable* and LAST.*variable* to identify duplicate values in the dataset:
+
 <table>
 <tr><td></td><td></td><th colspan="2">one variable: a</th><th colspan="2">two variables: a and b</th><th rowspan="2">Notes</th></tr>
 <tr><td></td><td></td><th nowrap>value of FIRST.variable and LAST.variable</th><th nowrap>SAS code</th><th nowrap>value of FIRST.variable and LAST.variable</th><th nowrap>SAS code</th></tr>
