@@ -156,7 +156,7 @@ Then we get the new table `test_new1`:
 |1|2|4|9|
 |5|2|4|9| 
 
-The last rows has been removed, and `test_new2`:
+The last row has been removed, and `test_new2`:
 
 |a|b|c|d|
 |-|-|-|-|
@@ -164,7 +164,7 @@ The last rows has been removed, and `test_new2`:
 |1|2|4|9|
 |5|2|4|9| 
 
-The first rows has been removed.
+The first row has been removed.
 
 The `test` has been modified to:
 
