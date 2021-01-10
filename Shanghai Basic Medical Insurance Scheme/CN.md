@@ -15,18 +15,18 @@
 
 <tr>
 <td></td><td></td><td></td>
-<th rowspan="2">当年账户段</th><td rowspan="9" nowrap>--></td>
-<th rowspan="2">起付段：起付额</th><td rowspan="9" nowrap>--></td>
+<th rowspan="2" nowrap>当年账户段</th><td rowspan="9" nowrap>--></td>
+<th rowspan="2" nowrap>起付段：起付额</th><td rowspan="9" nowrap>--></td>
 <th colspan="3">共付段：地方附加医疗保险基金报销比例</th>
-<th rowspan="2">起付段：起付额</th><td rowspan="9" nowrap>--></td>
-<th rowspan="2">统筹段：统筹基金报销比例</th>
-<th rowspan="2">统筹段：统筹基金报销比例</th>
-<th rowspan="2">统筹段：统筹基金报销比例</th>
+<th rowspan="2" nowrap>起付段：起付额</th><td rowspan="9" nowrap>--></td>
+<th rowspan="2" nowrap>统筹段：<br>统筹基金报销比例</th>
+<th rowspan="2" nowrap>统筹段：<br>统筹基金报销比例</th>
+<th rowspan="2" nowrap>统筹段：<br>统筹基金报销比例</th>
 </tr>
 
 <tr>
-<th>职退情况</th><th>人员类别名称</th><th>官方定义</th>
-<th>一级医院</th><th>二级医院</th><th>三级医院</th>
+<th nowrap>职退情况</th><th nowrap>人员类别名称</th><th>官方定义</th>
+<th nowrap>一级医院</th><th nowrap>二级医院</th><th nowrap>三级医院</th>
 </tr>
 
 <tr>
@@ -77,12 +77,12 @@
 不同人员类别各自的出生、工作、退休时间段，如下图所示：<br>
 其中绿色代表出生，蓝色代表首次参加工作、橙色代表退休
 
-<img src="https://github.com/Reverse-Universe/SAS/blob/main/MarkdownPicture/UEBMI_1.png" width="50%" height="50%">
+<img src="https://github.com/Reverse-Universe/SAS/blob/main/MarkdownPicture/UEBMI_1.png">
 
 ### 综合减负
 <table>
 <tr>
-<th>职退</th><th>类型</th><th>年收入</th><th>减负的部分</th><th>减负比例</th>
+<th nowrap>职退</th><th>类型</th><th>年收入</th><th>减负的部分</th><th nowrap>减负比例</th>
 </tr>
 
 <tr>
