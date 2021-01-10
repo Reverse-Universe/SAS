@@ -17,7 +17,7 @@
 <td></td><td></td><td></td>
 <th rowspan="2" nowrap>当年账户段</th><td rowspan="9" nowrap>--></td>
 <th rowspan="2" nowrap>起付段：起付额</th><td rowspan="9" nowrap>--></td>
-<th colspan="3">共付段：地方附加医疗保险基金报销比例</th>
+<th colspan="3">共付段：地方附加医<br>疗保险基金报销比例</th>
 <th rowspan="2" nowrap>起付段：起付额</th><td rowspan="9" nowrap>--></td>
 <th rowspan="2" nowrap>统筹段：<br>统筹基金报销比例</th>
 <th rowspan="2" nowrap>统筹段：<br>统筹基金报销比例</th>
@@ -58,7 +58,7 @@
 
 <tr>
 <td>中人一档</td>
-<td>1955年12月31日前出生；<br>2000年12月31日前参加工作；<br>2001年1月1日后办理退休手续</td>
+<td nowrap>1955年12月31日前出生；<br>2000年12月31日前参加工作；<br>2001年1月1日后办理退休手续</td>
 <td align="center">85%</td><td align="center">80%</td><td align="center">75%</td>
 </tr>
 
@@ -116,7 +116,7 @@
 
 </tr>
 <td rowspan="4">退休</td>
-<td>精简退职回乡老职工</td>
+<td nowrap>精简退职回乡老职工</td>
 <td></td>
 <td nowrap>年度自负医疗费用 - 本市上年度职工最低生活保障标准×25%</td>
 
