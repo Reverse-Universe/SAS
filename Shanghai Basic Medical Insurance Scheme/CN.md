@@ -229,8 +229,8 @@
 
 <tr>
 <td></td>
-<th rowspan="2">个人账户段</th>
-<th rowspan="2">自负段</th><th colspan="3">共付段：帮困基金支付</th>
+<th rowspan="2" nowrap>个人账户段</th>
+<th rowspan="2" nowrap>自负段</th><th colspan="3">共付段：帮困基金支付</th>
 <th rowspan="2">补助部分</th><th rowspan="2" nowrap>补助比例</th>
 <td rowspan="4">享受条件、申办流程、评估认定、服务内容及待遇等，比照本市长期护理保险的相关政策执行</td>
 </tr>
