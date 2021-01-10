@@ -221,26 +221,26 @@
 <table>
 
 <tr>
-<td></td><th rowspan="3">互助帮困补贴</th>
+<td></td><th rowspan="3" nowrap>互助帮困补贴</th>
 <th colspan="5">门急诊、门诊大病、家庭病床</th>
 <th colspan="2">住院</th>
-<th>社区居家照护和养老机构照护</th>
+<th nowrap>社区居家照护<br>和养老机构照护</th>
 </tr>
 
 <tr>
 <td></td>
 <th rowspan="2">个人账户段</th>
 <th rowspan="2">自负段</th><th colspan="3">共付段：帮困基金支付</th>
-<th rowspan="2">补助部分</th><th rowspan="2">补助比例</th>
+<th rowspan="2">补助部分</th><th rowspan="2" nowrap>补助比例</th>
 <td rowspan="4">享受条件、申办流程、评估认定、服务内容及待遇等，比照本市长期护理保险的相关政策执行</td>
 </tr>
 
 <tr>
-<td></td><th>一级医院</th><th>二级医院</th><th>三级医院</th>
+<td></td><th nowrap>一级医院</th><th nowrap>二级医院</th><th nowrap>三级医院</th>
 </tr>
 
 <tr>
-<td>外地医保落实人员</td>
+<td>外地医保<br>落实人员</td>
 <td>每人每年150元，划入《上海社区医疗互助卡》个人账户</td>
 <td rowspan="2">先使用互助帮困补贴（包括历年补贴结余资金），直到用完</td>
 <td align="middle">500元</td><td align="middle">85%</td><td align="middle">80%</td><td align="middle">75%</td>
@@ -248,7 +248,7 @@
 </tr>
 
 <tr>
-<td>外地医保未落实人员</td>
+<td nowrap>外地医保<br>未落实人员</td>
 <td>每人每年150元，划入《上海社区医疗互助卡》个人账户</td>
 <td align="middle">500元</td><td align="middle">85%</td><td align="middle">80%</td><td align="middle">75%</td>
 <td nowrap>住院医疗总费用 - 1000元</td><td align="middle">50%</td>
