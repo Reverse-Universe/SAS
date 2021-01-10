@@ -77,7 +77,7 @@
 不同人员类别各自的出生、工作、退休时间段，如下图所示：<br>
 其中绿色代表出生，蓝色代表首次参加工作、橙色代表退休
 
-![](https://github.com/Reverse-Universe/SAS/tree/main/MarkdownPicture/UEBMI_1.png")
+<img src="https://github.com/Reverse-Universe/SAS/blob/main/MarkdownPicture/UEBMI_1.png" width="50%" height="50%">
 
 ### 综合减负
 <table>
