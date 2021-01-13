@@ -148,7 +148,7 @@ data bills;
 		point = i;
 		output;
 		/* Clean the data in PDV */
-		<All Variables that will be used later should be align the value of NULL, according to whether it is charater or numeric>
+		<All Variables that will be used later should be aligned with the value of NULL, according to whether it is character or numeric>
 		variable_1 = '';
 		variable_2 = .;
 		...
@@ -224,7 +224,7 @@ There is something wrong with the last observation of `test`, which comes from t
 It is not difficult to understand the mechanism behind it if you know something about the PDV (Program Data Vector), which is the CORE of compilation phase of DATA step. Explaining how PDV works is a quite complicated job. For more details, please see [Essentials of the Program Data Vector (PDV)](https://support.sas.com/resources/papers/proceedings13/125-2013.pdf), which says that:
 > At the end of the DATA step for the second iteration, the SAS system again returns to the beginning of the DATA step to begin the next iteration. The values of the variables in the PDV are reset to missing.
 
-<br>
+
 **That is the key to the problem!** the SAS doesn't reset the variables of `a` and `b` to missing when the POINT= turns to read observations from another dataset.<br><br>
 We have to reset them to missing manually each time after the OUTPUT statement has been excecuted, and inside each DO-END loop:
 
