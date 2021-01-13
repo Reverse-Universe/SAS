@@ -120,18 +120,30 @@ data bills;
 	do i=&row_number;
 		set
 		/* Jan, 2001 */
-		ym0101.outpatient0101 ym0101.inpatient0101 ym0101.severe_disease0101
-		ym0101.ICU0101        ym0101.pharmacy0101        ym0101.internal_hos0101
+		ym0101.outpatient0101
+        ym0101.hospitalization0101
+        ym0101.severe_disease0101
+		ym0101.ICU0101
+        ym0101.pharmacy0101
+        ym0101.internal_hos0101
 
 		/* Feb, 2001 */
-		ym0102.outpatient0102 ym0102.hospitalization0102 ym0102.severe_disease0102
-		ym0102.ICU0102        ym0102.pharmacy0102        ym0102.internal_hos0102
+		ym0102.outpatient0102
+        ym0102.hospitalization0102
+        ym0102.severe_disease0102
+		ym0102.ICU0102
+        ym0102.pharmacy0102
+        ym0102.internal_hos0102
 
 		...
 
 		/* Dec, 2020 */
-		ym2012.outpatient2012 ym2012.hospitalization2012 ym2012.severe_disease2012
-		ym2012.ICU2012        ym2012.pharmacy2012        ym2012.internal_hos2012
+		ym2012.outpatient2012
+        ym2012.hospitalization2012
+        ym2012.severe_disease2012
+		ym2012.ICU2012
+        ym2012.pharmacy2012
+        ym2012.internal_hos2012
 
 		point = i;
 		output;
@@ -171,7 +183,7 @@ data sample;
 run;
 ```
 
-However, we will meet with some problems if we merge several datasets with different colunms by rows before using the POINT=. For example, we have two dataset -- test1 and test2.<br>
+However, we will meet with some problems if we combine several datasets with different colunms by rows before using the POINT=. For example, we have two dataset -- test1 and test2.<br>
 <table>
 <tr><th>test1</th><th>test2</th></tr>
 <tr><td>
@@ -206,7 +218,24 @@ Let's see what happens to the dataset `test`.
 |-|-|-|-|
 |1|1|.|.|
 |3|3|.|.|
-|3|3|2|2|
+|**3**|**3**|2|2|
+
+There is something wrong with the last observation of `test`, which comes from the second row of `test2` (the error is in **bold**), since The dataset `test2` DOESN'T HAVE the columns of `a` and `b`. It looks like that SAS does retain the values of `a` and `b` in the memory and forget to drop it while reading the second row from `test2`. But how could that happen?<br><br>
+It is not difficult to understand the mechanism behind it if you know something about the PDV (Program Data Vector), which is the CORE of compilation phase of DATA step. Explaining how PDV works is a quite complicated job. For more details, please see [Essentials of the Program Data Vector (PDV)](https://support.sas.com/resources/papers/proceedings13/125-2013.pdf), which says that:
+> At the end of the DATA step for the second iteration, the SAS system again returns to the beginning of the DATA step to begin the next iteration. The values of the variables in the PDV are reset to missing.
+
+<br>
+**That is the key to the problem!** the SAS doesn't reset the variables of `a` and `b` to missing when the POINT= turns to read observations from another dataset.<br><br>
+We have to reset them to missing manually each time after the OUTPUT statement has been excecuted, and inside each DO-END loop:
+
+<pre>
+variable_1 = '';
+variable_2 = .;
+...
+variable_n ='';
+</pre>
+
+Don't forget to take the type of each variable into consideration. Numeric missing values are represented by a single period (.). Character missing values are represented by a single blank enclosed in quotes (' '). 
 
 **Reference**
 1. Michael A. Raithel, Westat, Rockville, MD, [Creating and Exploiting SAS® Indexes](https://support.sas.com/resources/papers/proceedings/proceedings/sugi29/123-29.pdf)
