@@ -89,7 +89,8 @@ The capital in an individual medical account shall include the capital incorpora
 The periods on which different types of insured people borne, started work and went through the retirement ormality are shown below：<br>
 GRREN for birth, BLUE for starting work, ORANGE for retirement.
 
-<img src="https://github.com/Reverse-Universe/SAS/blob/main/MarkdownPicture/UEBMI_1_EN.png">
+![UEBMI_1_EN](MarkdownPicture/UEBMI_1_EN.png)
+
 
 ### Comprehensive Reduction
 #### Background
