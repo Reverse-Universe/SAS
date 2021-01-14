@@ -4,7 +4,7 @@ This repository is my notebook for tricks and tips that I summarize during work.
 I will not post the primitive data and SAS code due to the **non-disclosure aggrement** that I have signed. Since the name of columns of each dataset are based on PinYin, the Chinese alphabet, I translate them into English. The meaning of the columns' names may be a little bit weird, so I try to explain them as accurately as possible. The original SAS code for work is much more complicated, so I have made it more concise and tidy before added to the notebook.
 
 **ATTENTION:**
-Please click [here](Shanghai Basic Medical Insurance Scheme/EN.md) to learn about **Shanghai Social Medical Insurance Policy**. That would help you read and all of the articles in this repository.
+Please click [**here**](Shanghai_Basic_Medical_Insurance_Scheme/EN.md) to learn about **Shanghai Social Medical Insurance Policy**. That would help you read and all of the articles in this repository.
 
 >Life is Short, I use Python.  <img src="MarkdownPicture/python_logo.png" align="middle" width="20%" height="20%"><br><br>Dataset is Big, I use SAS.  <img src="MarkdownPicture/sas_logo.png" align="middle" width="10%" height="10%">
 
