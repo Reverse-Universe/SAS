@@ -76,7 +76,7 @@ run;
 
 The mechanism of **FIRST.** and **LAST.**
 
-<img src="https://github.com/Reverse-Universe/SAS/blob/main/MarkdownPicture/FIRST%26LAST.png" width="50%" height="50%">
+<img src="MarkdownPicture/FIRST%26LAST.png" width="50%" height="50%">
 
 There are five BY groups in the dataset above:
 1. a=1 b=1;
@@ -91,7 +91,7 @@ Varialbe `b` has been divided into five groups (b=1 b=2 b=3 b=1 b=2) depending o
 
 The following table is the evidence showing that the value of `FIRST.b` and `LAST.b` are dependent on the value of `a`.
 
-<img src="https://github.com/Reverse-Universe/SAS/blob/main/MarkdownPicture/FIRST%26LAST2.png" width="50%" height="50%">
+<img src="MarkdownPicture/FIRST%26LAST2.png" width="50%" height="50%">
 
 We can take full advantage of FIRST.*variable* and LAST.*variable* to identify duplicate values in the dataset:
 
