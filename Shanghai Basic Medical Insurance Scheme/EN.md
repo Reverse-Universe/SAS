@@ -30,9 +30,9 @@ The capital in an individual medical account shall include the capital incorpora
 <th rowspan="2" nowrap>Deductible</th><td rowspan="9" nowrap>--></td>
 <th colspan="3">Mutual Payment:</th>
 <th rowspan="2" nowrap>Deductible</th><td rowspan="9" nowrap>--></td>
-<th rowspan="2" nowrap>Mutual Payment: Reimbursement Rate</th>
-<th rowspan="2" nowrap>Mutual Payment: Reimbursement Rate</th>
-<th rowspan="2" nowrap>Mutual Payment: Reimbursement Rate</th>
+<th rowspan="2" nowrap>Mutual Payment:<br>Reimbursement Rate</th>
+<th rowspan="2" nowrap>Mutual Payment:<br>Reimbursement Rate</th>
+<th rowspan="2" nowrap>Mutual Payment:<br>Reimbursement Rate</th>
 </tr>
 
 <tr>
@@ -82,9 +82,9 @@ The capital in an individual medical account shall include the capital incorpora
 
 </table>
 
-+ The medical expenses paid by an in-service employee below the minimum amount as well as the remaining medical expenses after the payment by the pooling fund shall be paid by the surplus capital in his individual medical account from previous years, and the insufficient part shall be borne by the employee himself. ———— Shanghai Municipal People’s Government
-+ The maximum amount of medical expenses to be paid by pooling fund shall be 55,0000 yuan. If the sum of the medical expenses exceeding the minimum amount as paid by an employee for his hospitalization or stay in emergency office for observation and the medical expenses for the outpatient medical treatment against serious illness or the home sickbed are below the maximum amount, the abovementioned medical expenses shall be paid by pooling fund. ———— Shanghai Municipal People’s Government
-+ For the medical expenses above the maximum amount to be paid by pooling fund, 80% thereof shall be paid by additional fund, and the remaining part thereof shall be borne by the employee himself. ———— Shanghai Municipal People’s Government
++ The medical expenses paid by an in-service employee below the minimum amount as well as the remaining medical expenses after the payment by the pooling fund shall be paid by the surplus capital in his individual medical account from previous years, and the insufficient part shall be borne by the employee himself. -- Shanghai Municipal People’s Government
++ The maximum amount of medical expenses to be paid by pooling fund shall be 55,0000 yuan. If the sum of the medical expenses exceeding the minimum amount as paid by an employee for his hospitalization or stay in emergency office for observation and the medical expenses for the outpatient medical treatment against serious illness or the home sickbed are below the maximum amount, the abovementioned medical expenses shall be paid by pooling fund. -- Shanghai Municipal People’s Government
++ For the medical expenses above the maximum amount to be paid by pooling fund, 80% thereof shall be paid by additional fund, and the remaining part thereof shall be borne by the employee himself. -- Shanghai Municipal People’s Government
 
 The periods on which different types of insured people borne, started work and went through the retirement ormality are shown below：<br>
 GRREN for birth, BLUE for starting work, ORANGE for retirement.
@@ -237,7 +237,7 @@ To solve this problem, the Shanghai Municipal Government has launch a medical in
 <td></td><th rowspan="3" nowrap>Allowance</th>
 <th colspan="5">Outpatient & Emergency, Severe Diseases, Domestic Sickbed</th>
 <th colspan="2">Hospitalization</th>
-<th nowrap>Long-term elderly care Insurance (Home or Nursing Home)</th>
+<th nowrap>Long-term elderly care Insurance<br>(Home or Nursing Home)</th>
 </tr>
 
 <tr>
@@ -254,8 +254,8 @@ To solve this problem, the Shanghai Municipal Government has launch a medical in
 
 <tr>
 <td>With basic medical insurance in other provinces</td>
-<td>150 RMB for every person every year，transferred into the individual account of Shanghai Community Medical Mutual Aid Card</td>
-<td rowspan="2">Medical expenses below the deductible line shall be paid by the capital incorperated in the current year from the individual accounts, and when the balance of private accounts is insufficient, paid by individuals themselves.</td>
+<td nowrap>150 RMB for every person every year, <br>transferred into the individual account of<br>Shanghai Community Medical Mutual Aid Card</td>
+<td rowspan="2">Medical expenses below the deductible line shall be paid by the capital incorperated in the current and previous year from the individual accounts, and when the balance of private accounts is insufficient, paid by individuals themselves.</td>
 <td align="middle">500 RMB</td><td align="middle">85%</td><td align="middle">80%</td><td align="middle">75%</td>
 <td nowrap>Total Medical Expenses of hospitalization - Local Deductible - Expense Reimbursed Before</td><td align="middle">60%</td>
 </tr>
