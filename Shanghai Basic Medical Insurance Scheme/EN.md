@@ -184,7 +184,7 @@ The comprehensive burden reduction policy of basic medical care for urban worker
 
 <tr>
 <td>Age: Over 70</td><td>300 RMB（Village Clinics don't have Deductible Line）</td>
-<td align="middle">70%</td><td align="middle">60%</td><td align="middle">50%</td><td> align="middle"80%</td>
+<td align="middle">70%</td><td align="middle">60%</td><td align="middle">50%</td><td align="middle">80%</td>
 <td align="middle">50 RMB</td><td align="middle">100 RMB</td><td align="middle">300 RMB</td>
 <td align="middle">90%</td><td align="middle">80%</td><td align="middle">70%</td>
 </tr>
@@ -205,7 +205,7 @@ The comprehensive burden reduction policy of basic medical care for urban worker
 
 <tr>
 <td>Full-time Undergraduate Students, <br>Higher Vocational College Students, <br>Not-on-the-job Graduate Students</td><td>300 RMB（Village Clinics don't have Deductible Line）</td>
-<td align="middle">70%</td><td align="middle">60%</td><td align="middle">50%</td><td> align="middle"80%</td>
+<td align="middle">70%</td><td align="middle">60%</td><td align="middle">50%</td><td align="middle">80%</td>
 <td align="middle">50 RMB</td><td align="middle">100 RMB</td><td align="middle">300 RMB</td>
 <td align="middle">80%</td><td align="middle">75%</td><td align="middle">60%</td>
 </tr>
