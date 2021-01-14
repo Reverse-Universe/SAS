@@ -1,15 +1,18 @@
 # Shanghai Urban Employees' Basic Medical Insurance Scheme (UEBMI)
-## Treatment Coverage
 
+## Definition
+### insurance fund
 The insurance fund is divided into three parts: individual medical accounts, pooling fund and local supplementary (additional) fund.
 
+### individual medical account
 The capital in an individual medical account shall be owned by the individual himself, and can be carried forward to another year and be inherited.
-
+<br><br>
 The capital in an individual medical account shall include the capital incorporated in the current year and the surplus capital from previous years.
 
-### Definition
-+ **Mutual Payment:** Medical fees above the deductible line and below the cap. They are mainly paid from the pooling fund.
+### Mutual Payment
+Medical fees above the deductible line and below the cap. They are mainly paid from the pooling fund.
 
+## Treatment Coverage
 
 <table>
 
@@ -82,21 +85,78 @@ The capital in an individual medical account shall include the capital incorpora
 
 </table>
 
-+ The medical expenses paid by an in-service employee below the minimum amount as well as the remaining medical expenses after the payment by the pooling fund shall be paid by the surplus capital in his individual medical account from previous years, and the insufficient part shall be borne by the employee himself. -- Shanghai Municipal People’s Government
-+ The maximum amount of medical expenses to be paid by pooling fund shall be 55,0000 yuan. If the sum of the medical expenses exceeding the minimum amount as paid by an employee for his hospitalization or stay in emergency office for observation and the medical expenses for the outpatient medical treatment against serious illness or the home sickbed are below the maximum amount, the abovementioned medical expenses shall be paid by pooling fund. -- Shanghai Municipal People’s Government
-+ For the medical expenses above the maximum amount to be paid by pooling fund, 80% thereof shall be paid by additional fund, and the remaining part thereof shall be borne by the employee himself. -- Shanghai Municipal People’s Government
+**_Notes:_**
++ *The medical expenses paid by an in-service employee below the minimum amount as well as the remaining medical expenses after the payment by the pooling fund shall be paid by the surplus capital in his individual medical account from previous years, and the insufficient part shall be borne by the employee himself. -- Shanghai Municipal People’s Government*
++ *The maximum amount of medical expenses to be paid by pooling fund shall be 55,0000 yuan. If the sum of the medical expenses exceeding the minimum amount as paid by an employee for his hospitalization or stay in emergency office for observation and the medical expenses for the outpatient medical treatment against serious illness or the home sickbed are below the maximum amount, the abovementioned medical expenses shall be paid by pooling fund. -- Shanghai Municipal People’s Government*
++ *For the medical expenses above the maximum amount to be paid by pooling fund, 80% thereof shall be paid by additional fund, and the remaining part thereof shall be borne by the employee himself. -- Shanghai Municipal People’s Government*
 
-The periods on which different types of insured people borne, started work and went through the retirement ormality are shown below：<br>
-GRREN for birth, BLUE for starting work, ORANGE for retirement.
+*The periods on which different types of insured people borne, started work and went through the retirement ormality are shown below：*<br>
+*GRREN for birth, BLUE for starting work, ORANGE for retirement.*
 
 ![UEBMI_1_EN](MarkdownPicture/UEBMI_1_EN.png)
 
+## Hospitals of different tiers
 
-### Comprehensive Reduction
-#### Background
+|Level               |Description                    |
+|--------------------|-------------------------------|
+|First-tier hospital|<ul><li>community hospitals</li><li>community healthcare centers</li><li>rural healthcare clinics</li></ul>|
+|Second-tier hospital|<ul><li>county or district hospitals</li></ul>|
+|Third-tier hospital|<ul><li>topmost hospitals<ul><li>highly specialized staff</li><li>most-advanced equipment</li><li>well-funded</li><li>most are public hospitals</li></ul></li></ul>|
+|Non-tier hospital|<ul><li>internal hospital<ul><li>university clinic</li><li>enterprise/factory clinic</li></ul></li><li>nursing home</li><li>hospice</li><li>sanatorium</li></ul>|
+
+## Decomposition of Total Medical Expense
+### Co-payment and Three Class Drugs
+
+Medical insurance program participants are eligible for full or partial reimbursement of the cost of medicines included in the National Drug Reimbursement List (NRDL), which includes drugs that are divided into Class A, Class B and Class C drugs. 
++ **Class A drugs** typically include low-priced and clinically necessary drugs that are fully reimbursed
++ **Class B drugs** typically includes higher-priced or new drugs that generally require the patients to assume 10-30% of the drug’s cost (**Co-pay**). The deductible doesn't include co-pay (co-pay is before deductible).
++ **Class C drugs** mainly refers to the drugs that are not corverd by the Medical Insurance Program and should paid by the patients themselves.
+
+**More Details**
++ Generally, a **co-pay** is a fixed out-of-pocket amount paid by an insured for covered services, like the fees for physician visits. However, The meaning of **co-pay** in China's Medical Insurance Program is quite different from that.
++ **Co-pay = Out-Of-Pocket amount paid for Class B drugs.**
++ Both of Class A and B drugs are covered by Medical Insurance Program
+
+### Limited Payment
+Class B drugs generally require the patients to assume 10-30% of the drug's cost, but there are some exceptions. Some artifical organs (a kind of surgery disposable materials) is too pricy that we cannot use the co-pay rate directly. The mediccal insurance program only reimburses limited amount of expenses (usually a certain number), for example:<br>
+*The price of an artifical organ : 28,888 RMB*<br>
+*Limited Payment : 5,000 RMB*<br>
+*Co-pay Rate : 20%*<br>
+*Co-pay = Limited Payment × Co-pay Rate = 1,000 RMB*<br>
+*Covered Charges = Limited Payment × (1 - Co-pay Rate) = 4,000 RMB*<br>
+The medical insurance program sees the price of this materials as 5,000 RMB, no matter how much the hosptial charge the patient for it, and the 5,000 RMB is called 'Limited Payment'.<br>
+The gap between the price and the limited payment is called **Extra Payment**, which does not belong to co-pay or expenses of class C.
+
+### Formula (Relationship among expenses and payments)
+**Notes:** Usually, the co-pay is not confined to the amount paid for medications. It can also refers to the payment for some kinds of surgeries, inspections and other medical treatment.
+<br><br>
+
+Total Medical Expenses = Uncovered Expenses + Corvered Expenses
+<br><br>
+Uncovered Charges = Expenses of Class C drugs + Extra Payment + Co-pay
+<br><br>
+Covered Charges = Expenses Below Deductible Line + 
+                  Expenses Above Deductible Line and Below Cap Line  +
+                  Expenses Above Cap Line
+<br><br>
+Expenses Below Deductible Line (Paied by)= Surplus Capital from Previous Years' Individual Account (only in UEBMI) + Out-Of-Pocket Payment (for Deductible)
+<br><br>
+Expenses Above Deductible Line and Below Cap Line (Paid by)= Coinsurance Payment + Reimbursement (Paid by Pooling Fund)
+<br><br>
+Coinsurance Payment
+= Coinsurance × Expenses Above Deductible Line and Below Cap Line 
+(Paid by)= Surplus Capital from Previous Years' Individual Account (only in UEBMI) + Out-Of-Pocket Payment (for Expenses Above Deductible Line and Below Cap Line)
+<br><br>
+Out-Of-Pocket Payment == Expenses paid by Cash
+<br><br>
+Expenses Above Cap Line (Paid by) = Out-Of-Pocket Payment(for Cap) + Reimbursement (Paid by Local Additional Fund)
+
+
+## Comprehensive Reduction
+### Background
 The comprehensive burden reduction policy of basic medical care for urban workers is an innovative policy introduced by the Shanghai Municipal Government. The purpose is to help basic medical insurance insured people with serious illnesses reduce the burden of medical expensed and protect the basic medical rights of insured people.
 
-#### Treatment Coverage
+### Treatment Coverage
 
 <table>
 <tr>
