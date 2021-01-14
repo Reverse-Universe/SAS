@@ -151,7 +151,7 @@ Out-Of-Pocket Payment == Expenses paid by Cash
 <br><br>
 Expenses Above Cap Line (Paid by) = Out-Of-Pocket Payment(for Cap) + Reimbursement (Paid by Local Additional Fund)
 
-These relationships are illustrated as follows:
+These relationships are illustrated as following:
 ![mindmap for expenses decomposition](MarkdownPicture/Total_Medical_Expenses.png)
 
 
