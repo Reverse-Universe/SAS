@@ -109,7 +109,7 @@ Medical fees above the deductible line and below the cap. They are mainly paid f
 
 Medical insurance program participants are eligible for full or partial reimbursement of the cost of medicines included in the National Drug Reimbursement List (NRDL), which includes drugs that are divided into Class A, Class B and Class C drugs. 
 + **Class A drugs** typically include low-priced and clinically necessary drugs that are fully reimbursed
-+ **Class B drugs** typically includes higher-priced or new drugs that generally require the patients to assume 10-30% of the drug’s cost (**Co-pay**). The deductible doesn't include co-pay (co-pay is before deductible).
++ **Class B drugs** typically include higher-priced or new drugs that generally require the patients to assume 10-30% of the drug’s cost (**Co-pay**). The deductible doesn't include co-pay (co-pay is before deductible).
 + **Class C drugs** mainly refers to the drugs that are not corverd by the Medical Insurance Program and should paid by the patients themselves.
 
 **More Details**
@@ -118,13 +118,13 @@ Medical insurance program participants are eligible for full or partial reimburs
 + Both of Class A and B drugs are covered by Medical Insurance Program
 
 ### Limited Payment
-Class B drugs generally require the patients to assume 10-30% of the drug's cost, but there are some exceptions. Some artifical organs (a kind of surgery disposable materials) is too pricy that we cannot use the co-pay rate directly. The mediccal insurance program only reimburses limited amount of expenses (usually a certain number), for example:<br>
+Class B drugs generally require the patients to assume 10-30% of the drug's cost, but there are some exceptions. Some artifical organs (a kind of surgery disposable materials) is too pricy that we cannot use the co-pay rate directly. The mediccal insurance program only reimburses limited amount of expenses (usually a certain number), for example:<br><br>
 *The price of an artifical organ : 28,888 RMB*<br>
 *Limited Payment : 5,000 RMB*<br>
 *Co-pay Rate : 20%*<br>
-*Co-pay = Limited Payment × Co-pay Rate = 1,000 RMB*<br>
+*Co-pay = Limited Payment × Co-pay Rate = 1,000 RMB*<br><br>
 *Covered Charges = Limited Payment × (1 - Co-pay Rate) = 4,000 RMB*<br>
-The medical insurance program sees the price of this materials as 5,000 RMB, no matter how much the hosptial charge the patient for it, and the 5,000 RMB is called 'Limited Payment'.<br>
+The medical insurance program sees the price of this material as 5,000 RMB, no matter how much the hosptial charge the patient for it, and the 5,000 RMB is called 'Limited Payment'.<br>
 The gap between the price and the limited payment is called **Extra Payment**, which does not belong to co-pay or expenses of class C.
 
 ### Formula (Relationship among expenses and payments)
@@ -150,6 +150,9 @@ Coinsurance Payment
 Out-Of-Pocket Payment == Expenses paid by Cash
 <br><br>
 Expenses Above Cap Line (Paid by) = Out-Of-Pocket Payment(for Cap) + Reimbursement (Paid by Local Additional Fund)
+
+These relationships are illustrated as follows:
+![mindmap for expenses decomposition](MarkdownPicture/Total_Medical_Expenses.png)
 
 
 ## Comprehensive Reduction
