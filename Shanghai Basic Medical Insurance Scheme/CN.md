@@ -77,7 +77,7 @@
 不同人员类别各自的出生、工作、退休时间段，如下图所示：<br>
 其中绿色代表出生，蓝色代表首次参加工作、橙色代表退休
 
-![UEBMI_1](MarkdownPicture/UEBMI_1.png)
+![UEBMI_1](./MarkdownPicture/UEBMI_1.png)
 
 ### 综合减负
 <table>
