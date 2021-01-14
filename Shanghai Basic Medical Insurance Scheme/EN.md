@@ -41,15 +41,15 @@ The capital in an individual medical account shall include the capital incorpora
 </tr>
 
 <tr>
-<td rowspan="3">Employees</td><td>Age: Under 44</td><td>Employee under 45</td><td rowspan="7">Medical expenses below the deductible line shall be paid by the capital incorperated in the current year from the individual accounts, and when the balance of private accounts is insufficient, paid by individuals themselves.</td><td rowspan="3" align="center">1,500 RMB</td><td align="center">65%</td><td align="center">60%</td><td align="center">50%</td><td rowspan="3" align="center">1,500 RMB</td><td rowspan="3" align="center">85%</td><td rowspan="3" align="center">85%</td><td rowspan="7" align="center">80%</td>
+<td rowspan="3">Employees</td><td>Age: Under 44</td><td>Employee under 45</td><td rowspan="7">Medical expenses below the deductible line shall be paid by the capital incorperated in the current year from the individual accounts, and when the balance of individual accounts is insufficient, paid by individuals themselves.</td><td rowspan="3" align="center">1,500 RMB</td><td align="center">65%</td><td align="center">60%</td><td align="center">50%</td><td rowspan="3" align="center">1,500 RMB</td><td rowspan="3" align="center">85%</td><td rowspan="3" align="center">85%</td><td rowspan="7" align="center">80%</td>
 </tr>
 
 <tr>
-<td>Age: Over 45</td><td>employee over 45 except Middle-aged</td><td align="center">75%</td><td align="center">70%</td><td align="center">60%</td>
+<td>Age: Over 45</td><td>Employee over 45 except Middle-aged</td><td align="center">75%</td><td align="center">70%</td><td align="center">60%</td>
 </tr>
 
 <tr>
-<td>Middle-aged</td><td>borne before December 31, 1955,<br>started work before December 31, 2000</td><td align="center">75%</td><td align="center">70%</td><td align="center">70%</td>
+<td>Middle-aged</td><td>Borne before December 31, 1955,<br>started work before December 31, 2000</td><td align="center">75%</td><td align="center">70%</td><td align="center">70%</td>
 </tr>
 
 <tr>
@@ -69,7 +69,7 @@ The capital in an individual medical account shall include the capital incorpora
 
 <tr>
 <td>Middle-aged</td>
-<td nowrap>borne before December 31, 1955,<br>started work before December 31, 2000,<br>went through the retirement formality after January 1, 2001</td>
+<td nowrap>Borne before December 31, 1955,<br>started work before December 31, 2000,<br>Went through the retirement formality after January 1, 2001</td>
 <td align="center">85%</td><td align="center">80%</td><td align="center">75%</td>
 </tr>
 
@@ -106,52 +106,52 @@ The comprehensive burden reduction policy of basic medical care for urban worker
 <td rowspan="5">Employees</td>
 <td>People who agree to retain the social insurance relations due to severe diseases or loss of work ability</td>
 <td></td>
-<td nowrap>Annual Out-Of-pocket Payments - Local Subsistance Allowances of Last Year×25%</td>
+<td nowrap>Annual Out-Of-Pocket Payments - Local Subsistance Allowances of Last Year×25%</td>
 <td rowspan="9" align="center">90%</td>
 </tr>
 
 <tr>
 <td rowspan="2">Annual Income < Minimum Wage</td>
 <td nowrap>Annual Income＜Minimum Wage×80%</td>
-<td nowrap>Annual Out-Of-pocket Payments - Minimum Wage×80%×25%</td>
+<td nowrap>Annual Out-Of-Pocket Payments - Minimum Wage×80%×25%</td>
 </tr>
 
 <tr>
 <td nowrap>Minimum Wage×80% < Annual Income < Minimum Wage</td>
-<td nowrap>Annual Out-Of-pocket Payments - Minimum Wage×25%</td>
+<td nowrap>Annual Out-Of-Pocket Payments - Minimum Wage×25%</td>
 </tr>
 
 <tr>
 <td rowspan="2">Annual Incom > Minimum Wage</td>
 <td nowrap>Minimum Wage < Annual Income < Average Local Annual Wage(Last Year, Shanghai)×150%</td>
-<td nowrap>Annual Out-Of-pocket Payments - Annual Income×30%</td>
+<td nowrap>Annual Out-Of-Pocket Payments - Annual Income×30%</td>
 </tr>
 
 <tr>
 <td nowrap>Average Local Annual Wage×150% < Annual Income < Average Local Annual Wage×300%</td>
-<td nowrap>Annual Out-Of-pocket Payments - Annual Income×40%</td>
+<td nowrap>Annual Out-Of-Pocket Payments - Annual Income×40%</td>
 
 </tr>
 <td rowspan="4">Retirees</td>
 <td nowrap>Veteran Works Recruited back to Local Areas</td>
 <td></td>
-<td nowrap>Annual Out-Of-pocket Payments - Local Subsistance Allowances of Last Year×25%</td>
+<td nowrap>Annual Out-Of-Pocket Payments - Local Subsistance Allowances of Last Year×25%</td>
 
 <tr>
 <td rowspan="2">Annual Pension < Minimum Wage</td>
 <td nowrap>Annual Pension < Minimum Wage×80%</td>
-<td nowrap>Annual Out-Of-pocket Payments - Local Subsistance Allowances of Last Year×80%×25%</td>
+<td nowrap>Annual Out-Of-Pocket Payments - Local Subsistance Allowances of Last Year×80%×25%</td>
 </tr>
 
 <tr>
 <td nowrap>Minimum Wage×80% < Annual Pension < Minimum Wage</td>
-<td nowrap>Annual Out-Of-pocket Payments - Annual Pension×25%</td>
+<td nowrap>Annual Out-Of-Pocket Payments - Annual Pension×25%</td>
 </tr>
 
 <tr>
 <td>Annual Pension > Minimum Wage</td>
 <td nowrap>Minimum Wage < Annual Pension</td>
-<td nowrap>Annual Out-Of-pocket Payments - Annual Pension×30%</td>
+<td nowrap>Annual Out-Of-Pocket Payments - Annual Pension×30%</td>
 </tr>
 
 </table>
@@ -184,37 +184,37 @@ The comprehensive burden reduction policy of basic medical care for urban worker
 
 <tr>
 <td>Age: Over 70</td><td>300 RMB（Village Clinics don't have Deductible Line）</td>
-<td>70%</td><td>60%</td><td>50%</td><td>80%</td>
-<td>50 RMB</td><td>100 RMB</td><td>300 RMB</td>
-<td>90%</td><td>80%</td><td>70%</td>
+<td align="middle">70%</td><td align="middle">60%</td><td align="middle">50%</td><td> align="middle"80%</td>
+<td align="middle">50 RMB</td><td align="middle">100 RMB</td><td align="middle">300 RMB</td>
+<td align="middle">90%</td><td align="middle">80%</td><td align="middle">70%</td>
 </tr>
 
 <tr>
 <td>Age: 60 - 79</td><td>300 RMB（Village Clinics don't have Deductible Line）</td>
-<td>70%</td><td>60%</td><td>50%</td><td>80%</td>
-<td>50 RMB</td><td>100 RMB</td><td>300 RMB</td>
-<td>90%</td><td>80%</td><td>70%</td>
+<td align="middle">70%</td><td align="middle">60%</td><td align="middle">50%</td><td align="middle">80%</td>
+<td align="middle">50 RMB</td><td align="middle">100 RMB</td><td align="middle">300 RMB</td>
+<td align="middle">90%</td><td align="middle">80%</td><td align="middle">70%</td>
 </tr>
 
 <tr>
 <td>Age : 18 - 59</td><td>500 RMB（Village Clinics don't have Deductible Line）</td>
-<td>70%</td><td>60%</td><td>50%</td><td>80%</td>
-<td>50 RMB</td><td>100 RMB</td><td>300 RMB</td>
-<td>80%</td><td>75%</td><td>60%</td>
+<td align="middle">70%</td><td align="middle">60%</td><td align="middle">50%</td><td align="middle">80%</td>
+<td align="middle">50 RMB</td><td align="middle">100 RMB</td><td align="middle">300 RMB</td>
+<td align="middle">80%</td><td align="middle">75%</td><td align="middle">60%</td>
 </tr>
 
 <tr>
 <td>Full-time Undergraduate Students, <br>Higher Vocational College Students, <br>Not-on-the-job Graduate Students</td><td>300 RMB（Village Clinics don't have Deductible Line）</td>
-<td>70%</td><td>60%</td><td>50%</td><td>80%</td>
-<td>50 RMB</td><td>100 RMB</td><td>300 RMB</td>
-<td>80%</td><td>75%</td><td>60%</td>
+<td align="middle">70%</td><td align="middle">60%</td><td align="middle">50%</td><td> align="middle"80%</td>
+<td align="middle">50 RMB</td><td align="middle">100 RMB</td><td align="middle">300 RMB</td>
+<td align="middle">80%</td><td align="middle">75%</td><td align="middle">60%</td>
 </tr>
 
 <tr>
 <td>Primary and Secondary School Children & Infants</td><td>300 RMB（Village Clinics don't have Deductible Line）</td>
-<td>70%</td><td>60%</td><td>50%</td><td>80%</td>
-<td>50 RMB</td><td>100 RMB</td><td>300 RMB</td>
-<td>80%</td><td>75%</td><td>60%</td>
+<td align="middle">70%</td><td align="middle">60%</td><td align="middle">50%</td><td align="middle">80%</td>
+<td align="middle">50 RMB</td><td align="middle">100 RMB</td><td align="middle">300 RMB</td>
+<td align="middle">80%</td><td align="middle">75%</td><td align="middle">60%</td>
 </tr>
 
 </table>
@@ -245,7 +245,7 @@ To solve this problem, the Shanghai Municipal Government has launch a medical in
 <th rowspan="2" nowrap>Individual Medical Account</th>
 <th rowspan="2" nowrap>Deductible</th><th colspan="3">Mutual Payment: Reimbursement Rate</th>
 <th rowspan="2">Expenses for Allowance</th><th rowspan="2" nowrap>Allowance Rate</th>
-<td rowspan="4">enjoyment conditions, policy basis, declaration processes, assessment, contents of services and treatments refer to the Long-term elderly care insurance Policy</td>
+<td rowspan="4">enjoyment conditions, policy basis, declaration processes, assessment, contents of services and treatments refer to the Long-term Elderly Care Insurance Policy</td>
 </tr>
 
 <tr>
@@ -257,7 +257,7 @@ To solve this problem, the Shanghai Municipal Government has launch a medical in
 <td nowrap>150 RMB for every person every year, <br>transferred into the individual account of<br>Shanghai Community Medical Mutual Aid Card</td>
 <td rowspan="2">Medical expenses below the deductible line shall be paid by the capital incorperated in the current and previous year from the individual accounts, and when the balance of private accounts is insufficient, paid by individuals themselves.</td>
 <td align="middle">500 RMB</td><td align="middle">85%</td><td align="middle">80%</td><td align="middle">75%</td>
-<td nowrap>Total Medical Expenses of hospitalization - Local Deductible - Expense Reimbursed Before</td><td align="middle">60%</td>
+<td nowrap>Total Medical Expenses of hospitalization - Local Deductible - Expenses Reimbursed Before</td><td align="middle">60%</td>
 </tr>
 
 <tr>
