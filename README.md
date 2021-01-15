@@ -9,13 +9,13 @@ Please click [**here**](Shanghai_Basic_Medical_Insurance_Scheme/EN.md) to learn 
 >Life is Short, I use Python.  <img src="MarkdownPicture/python_logo.png" align="middle" width="20%" height="20%"><br><br>Dataset is Big, I use SAS.  <img src="MarkdownPicture/sas_logo.png" align="middle" width="10%" height="10%">
 
 ## Overview of the repository
-+ [Shanghai Basic Medical Insurance Scheme](Shanghai_Basic_Medical_Insurance_Scheme/README.md)
++ [Shanghai Basic Medical Insurance Scheme](Shanghai_Basic_Medical_Insurance_Scheme/EN.md)
 + [Structure of Database and Tables](Structure_of_Database_and_Tables/README.md)
 + Using MACRO in SAS
     + [Customize MACRO Functions](Customized_MACRO_Functions/README.md)
     + [Batch Processing with MACRO](Batch_Processing_with_MACRO/README.md)
     + [Debug with MACRO](DEBUG_with_MACRO/README.md)
-+ Data Analysis on Healthcare
++ Data analysis on healthcare bills
     + [Aggregation](Aggregation/README.md)
     + [Handling Refunds in Database](Handling_Refunds_in_Database/README.md)
 

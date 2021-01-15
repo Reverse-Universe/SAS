@@ -1,4 +1,32 @@
-# MATCH MERGE
+Sometimes, encapsulating some fundamental operations into one single MACRO function may keep the programming friendly and easy to handle with. For example, the match merging of two datasets (dataset1 left joining dataset2) consists of two PROC STEPs and one DATA STEP. We have to first sort them
+```sas
+proc sort data=dataset1; by variable; run;
+proc sort data=dataset2; by variable; run;
+```
+before merging them into one dataset through the `BY` statement in the DATA step.
+```sas
+data dataset;
+	merge dataset1(in=in1) dataset2(in=in2);
+	by varaible;
+	if in1;
+run;
+```
+The rules of merging datasets is determined by `IN=` in the DATA step, where:<br>
++ `if in1;` refers to left join;
++ `if in2;` refers to right join;
++ `if in1 and in2;` refers to inner join;
++ `if in2 and (not in1);` refer to dataset2 excepts dataset1;
++ ...
+<br><br>
+Programming like this may be a little bit laborious. However, the syntax of match merging in Python is quite readable.
+```python
+import pandas as pd
+pd.merge(dataset1, dataset2, on = 'variable', suffixes = ["_L"])
+```
+**WHY NOT keep it as in Python?**<br>
+Now let's encapsulate some fundamental operations into one single MACRO function which is quite similar to that in Python.
+
+# MATCH MERGING
 **Joins observation from two or more SAS datasets into a single observation.**
 
 **Encapsulates the MERGE Satement of SAS's DATA step into one macro function.**
