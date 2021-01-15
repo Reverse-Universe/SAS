@@ -10,7 +10,7 @@ The capital in an individual medical account shall be owned by the individual hi
 The capital in an individual medical account shall include the capital incorporated in the current year and the surplus capital from previous years.
 
 ### Mutual Payment
-Medical fees above the deductible line and below the cap. They are mainly paid from the pooling fund.
+Medical fees above the deductible line and below the cap. They are mainly paid from the pooling fund and the local additional fund.
 
 ## Treatment Coverage
 
@@ -103,6 +103,18 @@ Medical fees above the deductible line and below the cap. They are mainly paid f
 |Second-tier hospital|<ul><li>county or district hospitals</li></ul>|
 |Third-tier hospital|<ul><li>topmost hospitals<ul><li>highly specialized staff</li><li>most-advanced equipment</li><li>well-funded</li><li>most are public hospitals</li></ul></li></ul>|
 |Non-tier hospital|<ul><li>internal hospital<ul><li>university clinic</li><li>enterprise/factory clinic</li></ul></li><li>nursing home</li><li>hospice</li><li>sanatorium</li></ul>|
+
+## Outpatient medical treatment against serious illness
+includes outpatient service for:
++ Chemotherapy for malignant tumor
++ Radiotherapy for malignant tumor
++ Hemodialysis (limited to severe uremia)
++ Peritoneal Dialysis (limited to severe uremia)
++ Anti-Rejection Therapy for Kidney Transplantation
++ Isotope Therapy
++ Interventional Anti-cancer Treatment
++ Traditional Chinese Medicine Anti-cancer Treatment
++ Mental Illness
 
 ## Decomposition of Total Medical Expense
 ### Co-payment and Three Class Drugs
@@ -299,7 +311,7 @@ To solve this problem, the Shanghai Municipal Government has launch a medical in
 
 <tr>
 <td></td><th rowspan="3" nowrap>Allowance</th>
-<th colspan="5">Outpatient & Emergency, Severe Diseases, Domestic Sickbed</th>
+<th colspan="5">Outpatient & Emergency, Outpatient medical treatment against serious illness, Domestic Sickbed</th>
 <th colspan="2">Hospitalization</th>
 <th nowrap>Long-term elderly care Insurance<br>(Home or Nursing Home)</th>
 </tr>
